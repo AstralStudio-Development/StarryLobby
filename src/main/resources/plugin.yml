@@ -1,0 +1,7 @@
+name: StarryLobby
+version: '1.1.8'
+main: cn.starry.hub.Main
+authors: [ Starry_Killer ]
+description: Lobby Plugin for Mini-games Server, Powered By StarryCountry Development
+softdepend: [ PlayerPoints, LuckPerms, PlaceHolderAPI, ProtocolLib ]
+api-version: 1.12

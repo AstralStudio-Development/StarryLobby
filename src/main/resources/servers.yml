@@ -1,0 +1,9 @@
+#Put your server in there
+#The Name is your sub-server in BungeeCord-config.yml
+#PlaceHolder = %hub_<servername>%
+BedWars:
+  - "#putYourServerNameHere#"
+SkyWars:
+  - "#putYourServerNameHere#"
+OtherServers:
+  - "#putYourServerNameHere#"

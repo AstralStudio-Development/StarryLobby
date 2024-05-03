@@ -1,0 +1,66 @@
+#  ________  _________  ________  ________  ________      ___    ___ ___       ________  ________  ________      ___    ___
+# |\   ____\|\___   ___\\   __  \|\   __  \|\   __  \    |\  \  /  /|\  \     |\   __  \|\   __  \|\   __  \    |\  \  /  /|
+# \ \  \___|\|___ \  \_\ \  \|\  \ \  \|\  \ \  \|\  \   \ \  \/  / | \  \    \ \  \|\  \ \  \|\ /\ \  \|\ /_   \ \  \/  / /
+#  \ \_____  \   \ \  \ \ \   __  \ \   _  _\ \   _  _\   \ \    / / \ \  \    \ \  \\\  \ \   __  \ \   __  \   \ \    / /
+#   \|____|\  \   \ \  \ \ \  \ \  \ \  \\  \\ \  \\  \|   \/  /  /   \ \  \____\ \  \\\  \ \  \|\  \ \  \|\  \   \/  /  /
+#     ____\_\  \   \ \__\ \ \__\ \__\ \__\\ _\\ \__\\ _\ __/  / /      \ \_______\ \_______\ \_______\ \_______\__/  / /
+#    \|_________|   \|__|  \|__|\|__|\|__|\|__|\|__|\|__|\___/ /        \|_______|\|_______|\|_______|\|_______|\___/ /
+#
+# Support By StarryCountry Development 2021-2024
+# Version: 1.1.3
+
+#API Mode (If you are not clear about this feature, please do not change it)
+apiKey: bee68f55-0585-4c5e-90c6-b5618444782d
+apiMode: false
+
+#Database Setting
+database:
+  host: "localhost"
+  port: 27017
+  database: "starrylobby"
+
+#Spawn Location (Only Yaw, Please use /setWorldSpawn set spawn location)
+yaw: 0
+
+#Lobby Type
+type: "Lobby"
+
+#Other Setting (PlayerBalancer & High-Version & DebugServer)
+proxy: false
+beta: false
+
+#Void Settings (Set VoidTp or VoidLauncher)
+isVoidTp: false
+Void-Y: 30
+
+#Anti WorldDownloader (If you don't want others to steal your map)
+antiWDL: true
+
+#Custom Command (When you enable beta mode)
+command:
+  selector: ""
+  profile: ""
+  shop: ""
+  settings: ""
+
+#Servers Total PlaceHolder
+total:
+  BedWars: ""
+  RPG2: ""
+  RPG: ""
+  SkySurvival: ""
+  SkyWars: ""
+  ThePit: ""
+  RPG3: ""
+  RPG4: ""
+  MurderMystery: ""
+  Duel: ""
+  MagicCity: ""
+  SkyPvP: ""
+  Arcade: ""
+  KnockBackFFA: ""
+  RushBed: ""
+  FastBuilder: ""
+  HighVersionSurvival: ""
+  RoadPractice: ""
+

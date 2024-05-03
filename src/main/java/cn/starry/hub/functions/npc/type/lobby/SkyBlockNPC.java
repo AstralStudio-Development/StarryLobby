@@ -1,0 +1,73 @@
+package cn.starry.hub.functions.npc.type.lobby;
+
+import cn.starry.hub.Main;
+import cn.starry.hub.api.enums.LanguageType;
+import cn.starry.hub.utils.BungeeUtil;
+import cn.starry.hub.functions.npc.AbstractNPC;
+import me.clip.placeholderapi.PlaceholderAPI;
+import net.jitse.npclib.api.skin.Skin;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * @Author: Starry_Killer
+ * @Created_In: 2023/11/20
+ */
+public class SkyBlockNPC extends AbstractNPC {
+    @Override
+    public String getNpcInternalName() {
+        return "skyblock";
+    }
+
+    @Override
+    public List<String> getNpcDisplayName(Player player) {
+        List<String> lines = new ArrayList<>();
+        UUID uuid = player.getUniqueId();
+        LanguageType languageType = LanguageType.valueOf(Main.getInstance().getData().getPlayerData(uuid,"language"));
+        switch (languageType) {
+            default:
+                lines.add("&b神话空岛");
+                lines.add(PlaceholderAPI.setPlaceholders(player, "&e当前有" + Main.getInstance().getConfig().getString("total.ThePit") + "名玩家正在游玩"));
+                break;
+        }
+        return lines;
+    }
+
+    @Override
+    public Location getNpcSpawnLocation() {
+        return new Location(Bukkit.getWorld("world"),-25.5,93.0,-1.5,85,0);
+    }
+
+    @Override
+    public Skin getNpcSkin(Player player) {
+        String value = "ewogICJ0aW1lc3RhbXAiIDogMTU5MTg3MTUzMjU0NiwKICAicHJvZmlsZUlkIiA6ICI2ZmQyNGJlNDk4ZjA0MDJlOTZhYWQ2MWUzY2VmYjZmMCIsCiAgInByb2ZpbGVOYW1lIiA6ICJBbmdlbGFsbHhfIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzUyZTE1YzJkN2NmZGQzMDA4ZGQ3OTBiMmY4OTE3NWM3M2Q1ZTc3NjI3YWY2NTNmYzE4ZTlmY2M4Yjk2YWRmODQiCiAgICB9CiAgfQp9";
+        String signature = "U1ui0b5hI9jPnWkxdWSFKd9wpWT7AKvhzvuWy+ba/DpXjv444LqPPa3Y7DY6b4SPA9O/L1oPKUMDSrBe70pCwhWsBASdTPdJKfkCH1+TG24LlfoPMCwD/EYER2zR1A8hsnKAy+NNUfdoTkHScs4QEKekhX23/w7L3lm2cReWaJniP7HGutmAMONZJwfagheFvnzTnaQtrIWuQyNrXc8AQV8kSCDz1OC7nKxvY9o/NS/JSz5jP/ErIDWd3LKiEso16dOSbW0dtjW+4VpUaf/x6Hy+5ODeYBRV5WP3Ytl+g1CgYE9VyxalFoqAJIRltAd5EB4QAPrKDX/KoBYCBwRD6njC4U23IiBJanaf7CojPv2gfI4SNNwEPbIeU0efZ73S6FjteMWvTUis+al724mJMeqLzB6ktHdQD4ptLbbPzHMNeM7ZsNGt3u/wtkLpp0CIBtpps+GF7cQkJX1dFz9duSz7I+abo0zDq9lkJvBmDQWolAnhpto4spwAnHufnT9dR/HcD2pfKXhqexpX7PPeufLzTdEN/OcRMBv+Ix1bh1uYjD4DkiE2KiXRgB8D+wn8CHXxlvjSGofvvSpqgEZL2kJsB3mwB2mgZ65l5e98+CoLanvrXMqkQZs5pFVpBRlGAwKzb0AqRM5wwCXGln50o+ESXvcrrdXUMWScU5atIjY=";
+        return new Skin(value,signature);
+    }
+
+    @Override
+    public void handlePlayerInteract(Player player) {
+        BungeeUtil.sendServer(player,"G_ThePit#1");
+    }
+
+    @Override
+    public ItemStack getNpcHeldItem() {
+        return null;
+    }
+
+    @Override
+    public ItemStack getNpcHelmetItem() {
+        return null;
+    }
+
+    @Override
+    public boolean isContinuouslyWatchingPlayers() {
+        return false;
+    }
+}
