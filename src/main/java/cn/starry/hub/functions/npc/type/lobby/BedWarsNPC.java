@@ -1,0 +1,70 @@
+package cn.starry.hub.functions.npc.type.lobby;
+
+import cn.starry.core.utils.ItemBuilder;
+import cn.starry.hub.StarryLobby;
+import cn.starry.hub.functions.npc.AbstractNPC;
+import cn.starry.hub.utils.ConnecterUtil;
+import me.clip.placeholderapi.PlaceholderAPI;
+import com.bnstra.npclib.api.skin.Skin;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * @Author: Starry_Killer
+ * @Created_In: 2023/11/20
+ */
+public class  BedWarsNPC extends AbstractNPC {
+    @Override
+    public String getNpcInternalName() {
+        return "bedwars";
+    }
+
+    @Override
+    public List<String> getNpcDisplayName(Player player) {
+        ArrayList<String> lines = new ArrayList<String>();
+        UUID uuid = player.getUniqueId();
+        lines.add("&e❖ &b起床战争");
+        //lines.add(PlaceholderAPI.setPlaceholders((Player)player, (String)("&7当前有 &b" + StarryLobby.getInstance().getConfig().getString("total.BedWars") + " &7名玩家正在游玩")));
+        lines.add(PlaceholderAPI.setPlaceholders((Player)player, "&7点击游玩"));
+        return lines;
+    }
+
+    @Override
+    public Location getNpcSpawnLocation() {
+        return new Location(Bukkit.getWorld("world"), -48.5, 28.0, -4.5, -90.0f, 0.0f);
+    }
+
+    @Override
+    public Skin getNpcSkin(Player player) {
+        String value = "ewogICJ0aW1lc3RhbXAiIDogMTYxNjg2ODIxNjczNywKICAicHJvZmlsZUlkIiA6ICIwYWFjMWRlZjUwZmI0N2RjODNmOGU2Njk3MTg1ODRkZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJQZW50YWdyaWQiLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTUwZmYwMDcyNTE2ODBjNjNjYTJkM2E2YjY1ZWM1N2YzMWQ4ZjgzZGYxMjc0MWZiMGEzMzlhMWZlMmIwOTRhOSIKICAgIH0KICB9Cn0=";
+        String signature = "bsYrsYh6viAUp53oSYM1DoUleZgh4wwJi+WF698LKB/IaacgqMfrifel+YROVQ50MqiJzI9bXzI+pO7M2AUN1h+cZ1tApHVs69pcX4sRq7N0CFfHzvHGZvEXVOzquWZeLVX0MKk3MPjwCbGoByu8lWyS1zOlXeeUiJxfUAeU+OZmjH+WfqFyLvjH+jXiUx463CjP9ivCoqJ0LWLMkq7SpO7N3Vl11IS3ip8WdQr9JF7Mqxs6g3OD7e2OKhn9t1W5H0OjjU58hsaRGAbOld50u5p1BI7KfUq2spGE3NSFqYmf0beUgWRpYC8YTUyZFzVThGxSyUPjxdWz1UOjJXCTqZAY6oSRyDCG9B49SFWU4de9bC3e+nIsl4Fk59V1HELRZROML6jtwXrFLAcm7Aa9407qSc31d3E1lCEyGiWHEGX3n2FEx/oCEUM3z50Y+Wwufj4a1Ex/vOJbwAaThyTPP6NwOhAXxQaxUB/7OfKWWTzNLQrOhUiwklUWOfke1XszzX3MSiro3iR8SC3YB7w9Q0eVr9dDtyldofm0FKMom1bfU0OBfiWkxoYy0BIuYT2yLfWlJqiJ7c3LLCeCarwWDOwIg4dQ4C0sI4sHuvWhw1byGibsXmR0glS4ZCq2htUZ7dYrAklT8d91/4AlmdVfgSiPIYeYADpe6Ty2PgD2yTM=";
+        return new Skin(value, signature);
+    }
+
+    @Override
+    public void handlePlayerInteract(Player player) {
+        ConnecterUtil.connect(player,"BedWarsLobby");
+    }
+
+    @Override
+    public ItemStack getNpcHeldItem() {
+        return new ItemBuilder(Material.LEGACY_BED).build();
+    }
+
+    @Override
+    public ItemStack getNpcHelmetItem() {
+        return null;
+    }
+
+    @Override
+    public boolean isContinuouslyWatchingPlayers() {
+        return false;
+    }
+}
