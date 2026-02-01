@@ -13,20 +13,26 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Include
 public class Scoreboard implements AssembleAdapter {
-    private final SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yy");
     private final DecimalFormat numformatInt = new DecimalFormat("0");
     private final DecimalFormat numFormat = new DecimalFormat("0.0");
     private final DecimalFormat numFormatTwo = new DecimalFormat("0.00");
     private final DecimalFormat df = new DecimalFormat(",###,###,###,###");
     private final String RadonGameName = "%network_id%";
+    private final String type;
 
     private long lastAnimationTime = 0;
     private int animationTick = 0;
+    
+    public Scoreboard() {
+        this.type = StarryLobby.getInstance().getType();
+    }
 
     @Override
     public String getTitle(Player player) {
@@ -36,21 +42,21 @@ public class Scoreboard implements AssembleAdapter {
 
         //LanguageType languageType = LanguageType.valueOf(Main.getInstance().getData().getPlayerData(uuid,"language"));
 
-        if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("Lobby")) {
+        if (type.equalsIgnoreCase("Lobby")) {
             animationTitle = Arrays.asList("&b❏  &b&l幻梦茶会  &b❒");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("BedWars")) {
+        } else if (type.equalsIgnoreCase("BedWars")) {
             animationTitle = Arrays.asList("&b&l起床战争");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("Login")) {
+        } else if (type.equalsIgnoreCase("Login")) {
             animationTitle = Arrays.asList("&b&l登录大厅");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("Arcade")) {
+        } else if (type.equalsIgnoreCase("Arcade")) {
             animationTitle = Arrays.asList("&6&l街&e&l机游戏","&f&l街&6&l机&e&l游戏","&f&l街机&6&l游&e&l戏","&f&l街机游&6&l戏","&f&l街机游戏","&e&l街机游戏","&f&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏","&e&l街机游戏");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("MurderMystery")) {
+        } else if (type.equalsIgnoreCase("MurderMystery")) {
             animationTitle = Arrays.asList("&6&l密&e&l室杀手","&f&l密&6&l室&e&l杀手","&f&l密室&6&l杀&e&l手","&f&l密室杀&6&l手","&f&l密室杀手","&e&l密室杀手","&f&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手","&e&l密室杀手");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("SkyWars")) {
+        } else if (type.equalsIgnoreCase("SkyWars")) {
                 animationTitle = Arrays.asList("&b&l空岛战争");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("MegaWalls")) {
+        } else if (type.equalsIgnoreCase("MegaWalls")) {
                 animationTitle = Arrays.asList("&b&l超级战墙");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("Prototype")) {
+        } else if (type.equalsIgnoreCase("Prototype")) {
             animationTitle = Arrays.asList("&b&l游戏实验室");
         } else {
             animationTitle = Arrays.asList("&f...");
@@ -73,8 +79,10 @@ public class Scoreboard implements AssembleAdapter {
     public List<String> getLines(Player player) {
         UUID uuid = player.getUniqueId();
         List<String> lines = new ArrayList<>();
-            if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("Lobby")) {
-                lines.add("  &7" + dateFormat.format(System.currentTimeMillis()) + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
+        String dateStr = DATE_FORMATTER.format(LocalDateTime.now());
+        
+            if (type.equalsIgnoreCase("Lobby")) {
+                lines.add("  &7" + dateStr + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
                 lines.add(PlaceholderAPI.setPlaceholders(player, ""));
                 lines.add(PlaceholderAPI.setPlaceholders(player, "  &f会员等级  "));
                 lines.add(PlaceholderAPI.setPlaceholders(player, "  %core_rank_display%"));
@@ -90,10 +98,10 @@ public class Scoreboard implements AssembleAdapter {
                     lines.add("  &c即将重启 &7(" + TimeUtil.millisToRoundedTime(StarryLobby.getInstance().getRebootRunnable().getCurrentTask().getEndTime() - System.currentTimeMillis()).replace(" ", "") + "后) ");
                 }
                 return lines;
-            } else if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("BedWars")) {
+            } else if (type.equalsIgnoreCase("BedWars")) {
                 //switch (languageType) {
                     //default:
-                lines.add("  &7" + dateFormat.format(System.currentTimeMillis()) + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
+                lines.add("  &7" + dateStr + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
                 lines.add(PlaceholderAPI.setPlaceholders(player, ""));
                 lines.add(PlaceholderAPI.setPlaceholders(player, "  &f等级 %bedwars_level%").replace("[","").replace("]",""));
                 lines.add(PlaceholderAPI.setPlaceholders(player, ""));
@@ -111,7 +119,7 @@ public class Scoreboard implements AssembleAdapter {
                         //break;
                 //}
                 return lines;
-            } else if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("Login")) {
+            } else if (type.equalsIgnoreCase("Login")) {
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"  &7输入以下命令注册"));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"  &f /reg <密码> <密码> "));
@@ -123,8 +131,8 @@ public class Scoreboard implements AssembleAdapter {
                 lines.add(PlaceholderAPI.setPlaceholders(player,"  &f切勿与他人分享 "));
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
                 return lines;
-            } else if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("Arcade")) {
-                lines.add("  &7" + dateFormat.format(System.currentTimeMillis()) + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
+            } else if (type.equalsIgnoreCase("Arcade")) {
+                lines.add("  &7" + dateStr + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"&f在数据查询处NPC"));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"&f处查询你的街机"));
@@ -138,8 +146,8 @@ public class Scoreboard implements AssembleAdapter {
                     lines.add(PlaceholderAPI.setPlaceholders(player, "&ewww.YumeGames.net"));
                 }
                 return lines;
-            } else if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("MurderMystery")) {
-                lines.add("  &7" + dateFormat.format(System.currentTimeMillis()) + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
+            } else if (type.equalsIgnoreCase("MurderMystery")) {
+                lines.add("  &7" + dateStr + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
                 /*
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"&f总击杀数: &a%murdermystery_kills%"));
@@ -166,7 +174,7 @@ public class Scoreboard implements AssembleAdapter {
                     lines.add(PlaceholderAPI.setPlaceholders(player, "&ewww.YumeGames.net"));
                 }
                 return lines;
-            } else if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("SkyWars")) {
+            } else if (type.equalsIgnoreCase("SkyWars")) {
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
                 lines.add(PlaceholderAPI.setPlaceholders(player," &f 等级 " +  DataUtils.getIntFormated(player, Data.PLAYERINFO, Data.field.LEVEL) + " "));
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
@@ -213,8 +221,8 @@ public class Scoreboard implements AssembleAdapter {
                 return lines;
 
                  */
-            } else if (StarryLobby.getPlugin(StarryLobby.class).getConfig().getString("type").equalsIgnoreCase("Prototype")) {
-                lines.add("  &7" + dateFormat.format(System.currentTimeMillis()) + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
+            } else if (type.equalsIgnoreCase("Prototype")) {
+                lines.add("  &7" + dateStr + " &8" + PlaceholderAPI.setPlaceholders(player, RadonGameName));
                 lines.add(PlaceholderAPI.setPlaceholders(player,""));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"&f  这个大厅内的  "));
                 lines.add(PlaceholderAPI.setPlaceholders(player,"&f  所有游戏均处于  "));

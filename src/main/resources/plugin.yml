@@ -1,7 +1,7 @@
 name: StarryLobby
-version: '1.7.3-Renascence'
+version: '1.8.0-Renascence'
 main: cn.starry.hub.StarryLobby
 authors: [ Stalyer ]
-description: "Removed Inventory."
+description: "Process optimization."
 softdepend: [ AstralCore, PlayerPoints, LuckPerms, PlaceHolderAPI, ProtocolLib, Citizens, AuthMe, MasterControl ]
 api-version: 1.21

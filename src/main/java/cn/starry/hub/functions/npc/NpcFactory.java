@@ -34,25 +34,25 @@ public class NpcFactory implements Listener {
     public void init() {
         NPCLib npcLib = new NPCLib(StarryLobby.getPlugin(StarryLobby.class));
 
-        Collection<Class<?>> classes = null;
-        if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("Login")) {
-            classes = ClassUtil.getClassesInPackage(StarryLobby.getInstance(), "cn.starry.hub.functions.npc.type.login");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("Lobby")) {
-            classes = ClassUtil.getClassesInPackage(StarryLobby.getInstance(), "cn.starry.hub.functions.npc.type.lobby");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("BedWars")) {
-            classes = ClassUtil.getClassesInPackage(StarryLobby.getInstance(), "cn.starry.hub.functions.npc.type.bedwars");
-        } else if (StarryLobby.getInstance().getConfig().getString("type").equalsIgnoreCase("Prototype")) {
-            classes = ClassUtil.getClassesInPackage(StarryLobby.getInstance(), "cn.starry.hub.functions.npc.type.prototype");
-        }
+        String type = StarryLobby.getInstance().getConfig().getString("type", "");
+        String packageName = switch (type.toLowerCase()) {
+            case "login" -> "cn.starry.hub.functions.npc.type.login";
+            case "lobby" -> "cn.starry.hub.functions.npc.type.lobby";
+            case "bedwars" -> "cn.starry.hub.functions.npc.type.bedwars";
+            case "prototype" -> "cn.starry.hub.functions.npc.type.prototype";
+            default -> null;
+        };
 
-        if (classes == null) {
+        if (packageName == null) {
             return;
         }
+
+        Collection<Class<?>> classes = ClassUtil.getClassesInPackage(StarryLobby.getInstance(), packageName);
 
         for (Class<?> clazz : classes) {
             System.out.println(clazz.getSimpleName());
             if (AbstractNPC.class.isAssignableFrom(clazz)) {
-                AbstractNPC abstractNPC = (AbstractNPC) clazz.newInstance();
+                AbstractNPC abstractNPC = (AbstractNPC) clazz.getDeclaredConstructor().newInstance();
 
                 NPC npc = npcLib.createNPC();
                 npc.setLocation(abstractNPC.getNpcSpawnLocation());

@@ -6,8 +6,8 @@
 #     ____\_\  \   \ \__\ \ \__\ \__\ \__\\ _\\ \__\\ _\ __/  / /      \ \_______\ \_______\ \_______\ \_______\__/  / /
 #    \|_________|   \|__|  \|__|\|__|\|__|\|__|\|__|\|__|\___/ /        \|_______|\|_______|\|_______|\|_______|\___/ /
 #
-# Support By StarryCountry Development 2021-2024
-# Version: 1.4.0
+# Support By StarryCountry Development 2021-2026
+# Version: 1.8.0
 
 #Spawn Location (Only Yaw, Please use /setWorldSpawn set spawn location)
 yaw: 0
@@ -22,3 +22,7 @@ Void-Y: 30
 #Anti WorldDownloader (If you don't want others to steal your map)
 antiWDL: true
 
+# MongoDB Settings
+mongodb:
+  uri: "mongodb://localhost:27017"
+  database: "starry_lobby"

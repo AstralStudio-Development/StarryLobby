@@ -2,6 +2,7 @@ package cn.starry.hub.functions.runnable;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.core.utils.time.TimeUtil;
+import cn.starry.hub.StarryLobby;
 import cn.starry.hub.utils.TitleUtil;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class RebootRunnable extends BukkitRunnable {
 
         if (currentTask != null) {
             if (currentTask.endTime <= System.currentTimeMillis()) {
-                Bukkit.shutdown();
+                Bukkit.getScheduler().runTask(StarryLobby.getInstance(), Bukkit::shutdown);
                 return;
             }
             if (currentTask.endTime <= System.currentTimeMillis() + 5 * 1000) {

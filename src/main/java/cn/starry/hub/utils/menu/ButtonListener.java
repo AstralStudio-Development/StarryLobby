@@ -19,7 +19,9 @@ public class ButtonListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onButtonPress(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
+        if (!(event.getWhoClicked() instanceof Player player)) {
+            return;
+        }
         Menu openMenu = Menu.currentlyOpenedMenus.get(player.getName());
 
         if (openMenu != null) {
@@ -82,7 +84,9 @@ public class ButtonListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onInventoryClose(InventoryCloseEvent event) {
-        Player player = (Player) event.getPlayer();
+        if (!(event.getPlayer() instanceof Player player)) {
+            return;
+        }
         Menu openMenu = Menu.currentlyOpenedMenus.get(player.getName());
 
         if (openMenu != null) {

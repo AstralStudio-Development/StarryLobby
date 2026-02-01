@@ -17,7 +17,7 @@ public class EmojiCommand extends Command {
             return true;
         }
         Player player = (Player)sender;
-        player.sendMessage(new String[]{"§a以下是所有在大厅可用的表情变量: §7(§7需要§bMVP§c+§7或以上！)",
+        player.sendMessage("§a以下是所有在大厅可用的表情变量: §7(§7需要§bMVP§c+§7或以上！)",
                 "§6<3 §f- §c❤",
                 "§6:star: §f- §6✬",
                 "§6:yes: §f- §a✔",
@@ -30,7 +30,7 @@ public class EmojiCommand extends Command {
                 "§6:awa: §f- §a§lAwA",
                 "§6:owo: §f- §e§lOwO~",
                 "§6:skeleton: §f- §4☠",
-                "§6:snow: §f- §b☃"});
+                "§6:snow: §f- §b☃");
         return true;
     }
 

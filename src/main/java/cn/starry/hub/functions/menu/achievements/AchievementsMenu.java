@@ -1,95 +1,49 @@
 package cn.starry.hub.functions.menu.achievements;
 
-import cn.starry.core.api.data.CacheData;
 import cn.starry.core.api.enums.AchievementType;
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.functions.menu.buttons.AchievementsButtons;
-import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
-import org.bukkit.Bukkit;
-import org.bukkit.Sound;
+import cn.starry.hub.functions.menu.achievements.button.AchievementCategoryButton;
+import cn.starry.hub.functions.menu.achievements.button.AchievementSummaryButton;
+import cn.starry.hub.functions.menu.achievements.button.BackToProfileButton;
+import cn.starry.hub.utils.menu.Button;
+import cn.starry.hub.utils.menu.Menu;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 
-public class AchievementsMenu implements Listener {
+import java.util.HashMap;
+import java.util.Map;
 
-    private Inventory inv;
+public class AchievementsMenu extends Menu {
 
-    String title = CC.translate("                  &0成就");
-
-    public void openMenu(Player player) {
-        this.init(player);
-        player.openInventory(this.inv);
+    @Override
+    public String getTitle(Player player) {
+        return CC.translate("                  &0成就");
     }
 
-    public void init(Player player) {
-        this.inv = Bukkit.createInventory(null, 36, title);
+    @Override
+    public Map<Integer, Button> getButtons(Player player) {
+        Map<Integer, Button> buttons = new HashMap<>();
 
-        //Achievements Buttons
-        this.inv.setItem(1, new AchievementsButtons().TotalButton(player, AchievementType.GENERAL,3));
-        this.inv.setItem(10, new AchievementsButtons().TotalButton(player,AchievementType.BEDWARS,3));
-        this.inv.setItem(11, new AchievementsButtons().TotalButton(player,AchievementType.PIT,3));
-        this.inv.setItem(12, new AchievementsButtons().TotalButton(player,AchievementType.SKYWARS,3));
-        this.inv.setItem(13, new AchievementsButtons().TotalButton(player,AchievementType.DUELS,3));
+        buttons.put(1, new AchievementCategoryButton(AchievementType.GENERAL));
+        buttons.put(10, new AchievementCategoryButton(AchievementType.BEDWARS));
+        buttons.put(11, new AchievementCategoryButton(AchievementType.PIT));
+        buttons.put(12, new AchievementCategoryButton(AchievementType.SKYWARS));
+        buttons.put(13, new AchievementCategoryButton(AchievementType.DUELS));
 
-        this.inv.setItem(30, new AchievementsButtons().BackToProfile());
-        this.inv.setItem(31, new AchievementsButtons().TotalButton(player,null,4));
-        //this.inv.setItem(32, new AchievementsButtons().AchievementRewards(player));
+        buttons.put(30, new BackToProfileButton());
+        buttons.put(31, new AchievementSummaryButton());
 
-        player.openInventory(this.inv);
+        return buttons;
     }
-
-    @EventHandler
-    public void onClick(InventoryClickEvent e) {
-        Player player = (Player) e.getWhoClicked();
-        if (e.getCurrentItem() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta().getDisplayName() == null) {
-            return;
-        }
-        if (!e.getView().getTitle().equals(title)) {
-            return;
-        }
-        if (e.getClickedInventory().equals(player.getInventory())) {
-            return;
-        }
-        if (e.getView().getTitle().equals(title)) {
-            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().TotalButton(player,null,4))) {
-            e.setCancelled(true);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().BackToProfile())) {
-            new PlayerProfileMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().TotalButton(player,AchievementType.GENERAL,3))) {
-            CacheData.ACHIEVEMENT_MENU.put(player,AchievementType.GENERAL);
-            new AchievementsSubMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().TotalButton(player,AchievementType.BEDWARS,3))) {
-            CacheData.ACHIEVEMENT_MENU.put(player,AchievementType.BEDWARS);
-            new AchievementsSubMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().TotalButton(player,AchievementType.PIT,3))) {
-            CacheData.ACHIEVEMENT_MENU.put(player,AchievementType.PIT);
-            new AchievementsSubMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().TotalButton(player,AchievementType.SKYWARS,3))) {
-            CacheData.ACHIEVEMENT_MENU.put(player,AchievementType.SKYWARS);
-            new AchievementsSubMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new AchievementsButtons().TotalButton(player,AchievementType.DUELS,3))) {
-            CacheData.ACHIEVEMENT_MENU.put(player,AchievementType.DUELS);
-            new AchievementsSubMenu().openMenu(player);
-        }
-        e.setCancelled(true);
+    
+    @Override
+    public int getSize() {
+        return 6 * 9; // Original was 36 (4*9), but wait.
+        // Original init: Bukkit.createInventory(null, 36, title);
+        // Buttons at 30, 31.
+        // So 36 slots is correct (indices 0-35).
+        // SettingsMenu returned 6*9=54.
+        // Let's stick to 36 (4*9) if buttons fit. 
+        // 30 and 31 fit in 36 slots.
     }
-
 }
 

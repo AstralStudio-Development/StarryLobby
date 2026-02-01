@@ -1,10 +1,15 @@
 package cn.starry.hub.functions.menu.profile.button;
 
-import cn.starry.core.api.enums.GameOwned;
+import cn.starry.core.Core;
 import cn.starry.core.utils.ItemBuilder;
+import cn.starry.core.utils.NickUtil;
+import cn.starry.core.utils.RankUtil;
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.utils.ConnecterUtil;
+import cn.starry.hub.StarryLobby;
+import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
 import cn.starry.hub.utils.menu.Button;
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
@@ -12,70 +17,25 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @Author: Stalyer
- * @Date: 2025/8/20
- */
-
 public class ProfileButton extends Button {
-
-    private GameOwned game;
-
-    public ProfileButton(GameOwned game) {
-        this.game = game;
-    }
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        List<String> lore = new ArrayList<>();
-        List<String> description = game.getDescription();
-        lore.add(game.getType().getFormattedDisplayName());
-        lore.add(" ");
-        for (String line : description) {
-            lore.add(line);
+        List<String> lores = new ArrayList<>();
+        lores.add(PlaceholderAPI.setPlaceholders(player, "&7会员等级: " + RankUtil.getDisplayRankById(Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rank"),player.getUniqueId())));
+        lores.add(" ");
+        lores.add(PlaceholderAPI.setPlaceholders(player, "&7成就点数: &e" + Core.getInstance().getMongoDB().getAchievementPoints(player.getUniqueId(),"points")));
+        if (!NickUtil.isNicked(player.getUniqueId())) {
+            lores.add(PlaceholderAPI.setPlaceholders(player, "&7神秘之尘: &b%gadgetsmenu_mystery_dust%"));
+            lores.add(PlaceholderAPI.setPlaceholders(player, "&7人品值: &d0"));
+            lores.add(PlaceholderAPI.setPlaceholders(player, StarryLobby.getInstance().economy ? "&7璀璨星尘: &b%playerpoints_points%" : "&7璀璨星尘: &8已禁用"));
         }
-        if (game.equals(GameOwned.THEPIT) || game.equals(GameOwned.MEGAWALLS) || game.equals(GameOwned.UHC)) {
-            lore.add(" ");
-            lore.add("  &c前方高能！  ");
-            lore.add("  &c你已进入极限区域，  ");
-            lore.add("  &c不推荐新手游玩  ");
-            lore.add(" ");
-        }
-        lore.add(" ");
-        lore.add("  &b✧ 点击连接");
-        lore.add(" ");
 
-        return new ItemBuilder(game.getItemStack()).name(CC.translate(game.getDisplayName())).lore(lore).build();
+        return new ItemBuilder(Material.PLAYER_HEAD).name(CC.translate("&a角色信息")).durability(3).setModernSkullOwner(player).lore(lores).build();
     }
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton, ItemStack currentItem) {
-        player.closeInventory();
-        switch (game) {
-            case BEDWARS -> {
-                ConnecterUtil.connect(player,"BedWarsLobby");
-            }
-            case MURDERMYSTERY -> {
-                ConnecterUtil.connect(player,"MurderMysteryLobby");
-            }
-            case DUEL -> {
-                ConnecterUtil.connect(player,"DuelLobby");
-            }
-            case SKYWARS -> {
-                ConnecterUtil.connect(player,"SkyWarsLobby");
-            }
-            case THEPIT -> {
-                ConnecterUtil.connect(player,"ThePit");
-            }
-            case RPG -> {
-                ConnecterUtil.connect(player,"TourProject");
-            }
-            case ARCADE -> {
-                ConnecterUtil.connect(player,"ArcadeLobby");
-            }
-            case PROTOTYPE -> {
-                ConnecterUtil.connect(player,"PrototypeLobby");
-            }
-        }
+        new PlayerProfileMenu().openMenu(player);
     }
 }

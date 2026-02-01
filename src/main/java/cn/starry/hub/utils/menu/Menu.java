@@ -221,7 +221,15 @@ public abstract class Menu {
         this.buttons = buttons;
     }
 
-    // ===== 工具方法：把 null 与 AIR 视为同义的“空”，并做稳定的可视比较 =====
+    /**
+     * Clean up the player's menu session to prevent memory leaks.
+     * Should be called when player quits.
+     */
+    public static void cleanup(Player player) {
+        if (player == null) return;
+        currentlyOpenedMenus.remove(player.getName());
+    }
+
     private boolean isEmpty(ItemStack it) {
         return it == null || it.getType() == Material.AIR;
     }

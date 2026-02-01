@@ -37,12 +37,9 @@ public class ListenerRegistry {
     }
 
     private boolean isBukkitListener(Class<?> clazz) {
-        for (Class<?> interfaceClass : clazz.getInterfaces()) {
-            if (interfaceClass.equals(Listener.class)) {
-                return true;
-            }
-        }
-        return false;
+        return Listener.class.isAssignableFrom(clazz)
+                && !clazz.isInterface()
+                && !java.lang.reflect.Modifier.isAbstract(clazz.getModifiers());
     }
 
     private void registerListener(Class<?> clazz) {

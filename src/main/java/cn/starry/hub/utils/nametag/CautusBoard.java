@@ -18,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Getter
 public class CautusBoard {
 
+    private final Player player;
     private final UUID uuid;
 
     private CautusHandler cautusHandler;
@@ -32,6 +33,7 @@ public class CautusBoard {
      * @param cautusHandler instance.
      */
     public CautusBoard(Player player, CautusHandler cautusHandler) {
+        this.player = player;
         this.uuid = player.getUniqueId();
         this.cautusHandler = cautusHandler;
         this.setup(player);
@@ -55,7 +57,6 @@ public class CautusBoard {
      * @return existing scoreboard if in hook, or create new one.
      */
     public Scoreboard getScoreboard() {
-        Player player = Bukkit.getPlayer(this.uuid);
         if (this.cautusHandler.isHook() || player.getScoreboard() != Bukkit.getScoreboardManager().getMainScoreboard()) {
             return player.getScoreboard();
         } else {
@@ -122,34 +123,40 @@ public class CautusBoard {
         Map<String, List<String>> strings = new HashMap<>();
 
         for (BufferedNametag bufferedNametag : nametags) {
-            Team team = this.getOrRegisterTeam(scoreboard, bufferedNametag.getGroupName());
+            Team team = this.getOrRegisterTeam(scoreboard, bufferedNametag.groupName());
 
             toReturn.add(team.getName());
             this.getBufferedTeams().remove(team.getName());
 
-            String prefix = bufferedNametag.getPrefix() != null ? bufferedNametag.getPrefix() : ChatColor.RESET.toString();
-            String suffix = bufferedNametag.getSuffix() != null ? bufferedNametag.getSuffix() : ChatColor.RESET.toString();
+            String prefix = bufferedNametag.prefix() != null ? bufferedNametag.prefix() : ChatColor.RESET.toString();
+            String suffix = bufferedNametag.suffix() != null ? bufferedNametag.suffix() : ChatColor.RESET.toString();
 
-            team.setPrefix(prefix);
-            team.setSuffix(suffix);
+            if (!team.getPrefix().equals(prefix)) {
+                team.setPrefix(prefix);
+            }
+            if (!team.getSuffix().equals(suffix)) {
+                team.setSuffix(suffix);
+            }
 
             //High version support @ Stalyer
-            team.setColor(ChatColor.getByChar(prefix.substring(1,2)));
+            if (prefix.length() >= 2) {
+                ChatColor color = ChatColor.getByChar(prefix.substring(1, 2));
+                if (color != null && team.getColor() != color) {
+                    team.setColor(color);
+                }
+            }
 
-            if (bufferedNametag.getPlayer() != null) {
-                if (!team.hasEntry(bufferedNametag.getPlayer().getName())) {
-                    team.addEntry(bufferedNametag.getPlayer().getName());
+            if (bufferedNametag.player() != null) {
+                if (!team.hasEntry(bufferedNametag.player().getName())) {
+                    team.addEntry(bufferedNametag.player().getName());
                 }
-                List<String> inner = new ArrayList<>();
-                if (strings.containsKey(team.getName())) {
-                    inner = strings.get(team.getName());
-                }
-                inner.add(bufferedNametag.getPlayer().getName());
-                strings.put(team.getName(), inner);
+                strings.computeIfAbsent(team.getName(), k -> new ArrayList<>()).add(bufferedNametag.player().getName());
             }
 
             // Friendly Invisibility.
-            team.setCanSeeFriendlyInvisibles(bufferedNametag.isFriendlyInvis());
+            if (team.canSeeFriendlyInvisibles() != bufferedNametag.friendlyInvis()) {
+                team.setCanSeeFriendlyInvisibles(bufferedNametag.friendlyInvis());
+            }
         }
 
         // Unregister teams that are no longer in use.
@@ -179,7 +186,7 @@ public class CautusBoard {
             }
 
             for (String entry : team.getEntries()) {
-                if (members.contains(entry)) {
+                if (members != null && members.contains(entry)) {
                     continue;
                 }
                 team.removeEntry(entry);
@@ -192,10 +199,9 @@ public class CautusBoard {
      */
     public void update() {
         Scoreboard scoreboard = this.getScoreboard();
-        Player player = Bukkit.getPlayer(getUuid());
 
-        this.updateHealthBelow(player, scoreboard);
-        this.updateNametags(player, scoreboard);
+        this.updateHealthBelow(this.player, scoreboard);
+        this.updateNametags(this.player, scoreboard);
     }
 
     /**

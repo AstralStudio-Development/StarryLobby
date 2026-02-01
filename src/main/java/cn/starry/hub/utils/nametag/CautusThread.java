@@ -24,6 +24,10 @@ public class CautusThread extends Thread {
         this.taskId = protocolLib.getDescription().getVersion().startsWith("5") ? Bukkit.getScheduler().runTaskTimer(Core.getInstance(), this, handler.getTicks(), handler.getTicks()).getTaskId() : Bukkit.getScheduler().runTaskTimerAsynchronously(Core.getInstance(), this, handler.getTicks(), handler.getTicks()).getTaskId();
     }
 
+    public void cancel() {
+        Bukkit.getScheduler().cancelTask(this.taskId);
+    }
+
     @Override
     public void run() {
         if (!Core.getInstance().isEnabled()) {
