@@ -1,6 +1,6 @@
 package cn.starry.hub.functions.menu.selector.button;
 
-import cn.starry.core.api.enums.GameOwned;
+import cn.starry.hub.functions.menu.selector.button.GameOwned ;
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.utils.ConnecterUtil;
@@ -36,23 +36,23 @@ public class GameItemButton extends Button {
     public ItemStack getButtonItem(Player player) {
         List<String> lore = new ArrayList<>();
         List<String> description = game.getDescription();
+        lore.add(game.getDisplayName());
         lore.add(game.getType().getFormattedDisplayName());
         lore.add(" ");
         for (String line : description) {
             lore.add(line);
         }
-        if (game.equals(GameOwned.THEPIT) || game.equals(GameOwned.MEGAWALLS) || game.equals(GameOwned.UHC)) {
+        if (game.equals(GameOwned.THEPIT) || game.equals(GameOwned.MEGAWALLS) || game.equals(GameOwned.UHC) || game.equals(GameOwned.RPG)) {
             lore.add(" ");
-            lore.add("  &c前方高能！  ");
-            lore.add("  &c你已进入极限区域，  ");
-            lore.add("  &c不推荐新手游玩  ");
-            lore.add(" ");
+            lore.add("   &c前方高能   ");
+            lore.add("   &c你已进入极限区域   ");
+            lore.add("   &c不推荐新手游玩   ");
         }
         lore.add(" ");
-        lore.add("  &b✧ 点击连接");
+        lore.add("   &a+ &f点击连接");
         lore.add(" ");
 
-        return new ItemBuilder(game.getItemStack()).name(CC.translate(game.getDisplayName())).lore(lore).build();
+        return new ItemBuilder(game.getItemStack()).name(" ").lore(lore).build();
     }
 
     @Override
