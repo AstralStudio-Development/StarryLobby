@@ -5,8 +5,6 @@ import cn.starry.core.api.data.CacheData;
 import cn.starry.core.api.enums.GameOwned;
 import cn.starry.core.utils.BungeeUtil;
 import cn.starry.hub.StarryLobby;
-import cn.starry.hub.functions.menu.buttons.CustomSlotButtons;
-import cn.starry.hub.functions.menu.buttons.GadgetsSlotButtons;
 import cn.starry.hub.functions.menu.slot.SlotMenu;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -26,7 +24,7 @@ public class CustomSlot implements Listener {
         StarryLobby main = StarryLobby.getInstance();
         Player player = (Player) e.getWhoClicked();
         UUID uuid = player.getUniqueId();
-        ItemStack item = new CustomSlotButtons().Button(player);
+        //ItemStack item = new CustomSlotItemButton().getButtonItem(player);
         if (e.getCurrentItem() == null) {
             return;
         }

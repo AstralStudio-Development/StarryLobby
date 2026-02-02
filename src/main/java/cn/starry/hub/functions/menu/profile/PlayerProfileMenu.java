@@ -22,11 +22,11 @@ public class PlayerProfileMenu extends Menu {
         Map<Integer, Button> buttons = new HashMap<>();
 
         buttons.put(13, new ProfileButton());
-        buttons.put(29, new AppearanceButton());
-        buttons.put(30, new AchievementButton());
+        buttons.put(29, new AppearanceButton(this));
+        buttons.put(30, new AchievementButton(this));
         buttons.put(31, new AccountStatusButton());
         buttons.put(32, new SettingsButton());
-        buttons.put(33, new StoreButton());
+        buttons.put(33, new StoreButton(this));
 
         return buttons;
     }

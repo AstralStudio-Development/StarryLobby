@@ -1,6 +1,7 @@
 package cn.starry.hub.utils.menu.buttons;
 
 import cn.starry.core.utils.ItemBuilder;
+import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.utils.menu.Button;
 import cn.starry.hub.utils.menu.Menu;
 import org.bukkit.Material;
@@ -24,17 +25,36 @@ public class BackButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        List<String> lore = new ArrayList<>();
-        lore.add("&7至" + back.getTitle(player));
+        List<String> lores = new ArrayList<>();
+        if (back == null) {
+            lores.add("   &c关闭   ");
+            lores.add(" ");
+            return new ItemBuilder(Material.BARRIER).name(CC.translate(" ")).lore(lores).build();
+        }
 
-        return new ItemBuilder(Material.ARROW).name("&a返回").lore(lore).build();
+        lores.add("   &a返回   ");
+        lores.add(" ");
+
+        String title = back.getTitle(player);
+        if (title != null) {
+            title = title.replaceAll("\\s+", "").replaceAll("(?i)[&§][0-9a-fk-or]", "");
+        } else {
+            title = "";
+        }
+
+        lores.add("   &7返回至" + title + "   ");
+        lores.add(" ");
+
+        return new ItemBuilder(Material.ARROW).name(CC.translate(" ")).lore(lores).build();
     }
 
     @Override
-    public void clicked(Player player, int i, ClickType clickType, int hb, ItemStack currentItem) {
-        Button.playNeutral(player);
-
-        this.back.openMenu(player);
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton, ItemStack currentItem) {
+        if (back == null) {
+            player.closeInventory();
+        } else {
+            this.back.openMenu(player);
+        }
     }
 
 }

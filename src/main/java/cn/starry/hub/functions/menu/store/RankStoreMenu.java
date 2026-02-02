@@ -1,90 +1,61 @@
 package cn.starry.hub.functions.menu.store;
 
-import cn.starry.hub.functions.menu.buttons.StoreButtons;
-
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
-import org.bukkit.Bukkit;
-import org.bukkit.Sound;
+import cn.starry.hub.functions.menu.store.button.PointInfoButton;
+import cn.starry.hub.functions.menu.store.button.StoreCategoryButton;
+import cn.starry.hub.functions.menu.store.button.StoreGlassButton;
+import cn.starry.hub.functions.menu.store.button.UnavailableButton;
+import cn.starry.hub.utils.menu.Button;
+import cn.starry.hub.utils.menu.Menu;
+import cn.starry.hub.utils.menu.buttons.BackButton;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 
+import java.util.HashMap;
+import java.util.Map;
 
-public class RankStoreMenu implements Listener {
+public class RankStoreMenu extends Menu {
 
-    private Inventory inv;
+    private final Menu parent;
 
-    String title = CC.translate("                  &0会员");
-
-    public void openMenu(Player player) {
-        this.init(player);
-        player.openInventory(this.inv);
+    public RankStoreMenu(Menu parent) {
+        this.parent = parent;
     }
 
-    public void init(Player player) {
-        this.inv = Bukkit.createInventory(null, 54, title);
+    public RankStoreMenu() {
+        this(null);
+    }
 
-        this.inv.setItem(0,new StoreButtons().getRank());
-        this.inv.setItem(1,new StoreButtons().getNetworkBooster());
-        this.inv.setItem(2,new StoreButtons().getDownloadableContent());
+    @Override
+    public String getTitle(Player player) {
+        return CC.translate("                  &0会员");
+    }
+
+    @Override
+    public Map<Integer, Button> getButtons(Player player) {
+        Map<Integer, Button> buttons = new HashMap<>();
+
+        buttons.put(0, new StoreCategoryButton(StoreCategoryButton.Category.RANK, parent));
+        buttons.put(1, new StoreCategoryButton(StoreCategoryButton.Category.BOOSTER, parent));
+        buttons.put(2, new StoreCategoryButton(StoreCategoryButton.Category.DLC, parent));
 
         for (int i = 9; i < 18; i++) {
-            this.inv.setItem(i,new StoreButtons().GlassButton(false));
+            buttons.put(i, new StoreGlassButton(false));
         }
 
-        this.inv.setItem(9,new StoreButtons().GlassButton(true));
+        // Highlight the active category (Rank is index 0, so slot 9 should be active?)
+        // In original code: this.inv.setItem(9,new StoreButtons().GlassButton(true));
+        buttons.put(9, new StoreGlassButton(true));
 
-        this.inv.setItem(31,new StoreButtons().getUnavailable());
+        buttons.put(31, new UnavailableButton());
 
-        this.inv.setItem(48,new StoreButtons().Back());
-        this.inv.setItem(49,new StoreButtons().getPoint());
+        buttons.put(48, new BackButton(parent));
+        buttons.put(49, new PointInfoButton());
 
-        player.openInventory(this.inv);
+        return buttons;
     }
 
-    @EventHandler
-    public void onClick(InventoryClickEvent e) {
-        Player player = (Player) e.getWhoClicked();
-        if (e.getCurrentItem() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta().getDisplayName() == null) {
-            return;
-        }
-        if (!e.getView().getTitle().equals(title)) {
-            return;
-        }
-        if (e.getClickedInventory().equals(player.getInventory())) {
-            return;
-        }
-        if (e.getView().getTitle().equals(title)) {
-            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-        }
-        //Main Button Listener
-        //
-        if (e.getCurrentItem().equals(new StoreButtons().getPoint())) {
-            player.closeInventory();
-            player.sendMessage(CC.translate("&c暂不支持充值服务器"));
-        }
-        if (e.getCurrentItem().equals(new StoreButtons().Back())) {
-            new PlayerProfileMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new StoreButtons().getRank())) {
-            new RankStoreMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new StoreButtons().getNetworkBooster())) {
-            new BoosterStoreMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new StoreButtons().getDownloadableContent())) {
-            new DLCStoreMenu().openMenu(player);
-        }
+    @Override
+    public int getSize() {
+        return 54;
     }
-
 }
-

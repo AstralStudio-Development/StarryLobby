@@ -110,8 +110,6 @@ public class LobbyManager {
         ListenerRegistry registry = new ListenerRegistry(plugin);
         registry.registerListenersInPackage("cn.starry.hub.functions");
         registry.registerListenersInPackage("cn.starry.hub.listener");
-        
-        plugin.getServer().getPluginManager().registerEvents(new ParkourListener(), plugin);
 
         Bukkit.getConsoleSender().sendMessage(CC.translate(plugin.getPrefix() + "&f所有监听器已成功注册!"));
     }

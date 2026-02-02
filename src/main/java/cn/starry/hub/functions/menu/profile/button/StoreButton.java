@@ -6,6 +6,7 @@ import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.functions.menu.store.RankStoreMenu;
 import cn.starry.hub.utils.menu.Button;
+import cn.starry.hub.utils.menu.Menu;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,6 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoreButton extends Button {
+
+    private Menu parent;
+
+    public StoreButton(Menu parent) {
+        this.parent = parent;
+    }
+
+    public StoreButton() {
+        this(null);
+    }
 
     @Override
     public ItemStack getButtonItem(Player player) {
@@ -40,6 +51,6 @@ public class StoreButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton, ItemStack currentItem) {
-        new RankStoreMenu().openMenu(player);
+        new RankStoreMenu(parent).openMenu(player);
     }
 }

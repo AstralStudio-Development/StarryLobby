@@ -1,70 +1,47 @@
 package cn.starry.hub.functions.menu.profile;
 
-import cn.starry.hub.functions.menu.buttons.CustomViewButtons;
 import cn.starry.core.utils.chat.CC;
-import org.bukkit.Bukkit;
-import org.bukkit.Sound;
+import cn.starry.hub.functions.menu.profile.button.RankColorMenuButton;
+import cn.starry.hub.functions.menu.profile.button.ShineButton;
+import cn.starry.hub.utils.menu.Button;
+import cn.starry.hub.utils.menu.Menu;
+import cn.starry.hub.utils.menu.buttons.BackButton;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 
-import java.util.UUID;
+import java.util.HashMap;
+import java.util.Map;
 
-public class CustomViewMenu implements Listener {
+public class CustomViewMenu extends Menu {
 
-    private Inventory inv;
+    private final Menu parent;
 
-    String title = CC.translate("               &0自定义外观");
-
-    public void openMenu(Player player) {
-        this.init(player);
-        player.openInventory(this.inv);
+    public CustomViewMenu(Menu parent) {
+        this.parent = parent;
     }
 
-    public void init(Player player) {
-        this.inv = Bukkit.createInventory(null, 54, title);
-
-        this.inv.setItem(20, new CustomViewButtons().RankColor());
-        this.inv.setItem(24, new CustomViewButtons().Shine());
-
-        this.inv.setItem(40, new CustomViewButtons().Back());
-
-        player.openInventory(this.inv);
+    public CustomViewMenu() {
+        this(null);
     }
 
-    @EventHandler
-    public void onClick(InventoryClickEvent e) {
-        Player player = (Player) e.getWhoClicked();
-        UUID uuid = player.getUniqueId();
-        if (e.getCurrentItem() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta().getDisplayName() == null) {
-            return;
-        }
-        if (!e.getView().getTitle().equals(title)) {
-            return;
-        }
-        if (e.getClickedInventory().equals(player.getInventory())) {
-            return;
-        }
-        if (e.getView().getTitle().equals(title)) {
-            player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-        }
-        //
-        if (e.getCurrentItem().equals(new CustomViewButtons().Back())) {
-            new PlayerProfileMenu().openMenu(player);
-        }
-        if (e.getCurrentItem().equals(new CustomViewButtons().RankColor())) {
-            new RankColorMenu().openMenu(player,false);
-        }
-        e.setCancelled(true);
+    @Override
+    public String getTitle(Player player) {
+        return CC.translate("               &0自定义外观");
     }
 
+    @Override
+    public Map<Integer, Button> getButtons(Player player) {
+        Map<Integer, Button> buttons = new HashMap<>();
+
+        buttons.put(20, new RankColorMenuButton(this));
+        buttons.put(24, new ShineButton());
+
+        buttons.put(40, new BackButton(parent));
+
+        return buttons;
+    }
+
+    @Override
+    public int getSize() {
+        return 54;
+    }
 }
-

@@ -2,6 +2,7 @@ package cn.starry.hub.functions.menu.profile.button;
 
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.core.utils.chat.CC;
+import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
 import cn.starry.hub.functions.menu.settings.SettingsMenu;
 import cn.starry.hub.utils.menu.Button;
 import org.bukkit.Material;
@@ -32,6 +33,6 @@ public class SettingsButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton, ItemStack currentItem) {
-        new SettingsMenu(null,0).openMenu(player);
+        new SettingsMenu(new PlayerProfileMenu(),0).openMenu(player);
     }
 }

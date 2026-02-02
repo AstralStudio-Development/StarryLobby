@@ -4,6 +4,7 @@ import cn.starry.core.utils.ItemBuilder;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.functions.menu.achievements.AchievementsMenu;
 import cn.starry.hub.utils.menu.Button;
+import cn.starry.hub.utils.menu.Menu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -13,6 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AchievementButton extends Button {
+
+    private Menu parent;
+
+    public AchievementButton(Menu parent) {
+        this.parent = parent;
+    }
+
+    public AchievementButton() {
+        this(null);
+    }
 
     @Override
     public ItemStack getButtonItem(Player player) {
@@ -30,6 +41,6 @@ public class AchievementButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton, ItemStack currentItem) {
-        new AchievementsMenu().openMenu(player);
+        new AchievementsMenu(parent).openMenu(player);
     }
 }

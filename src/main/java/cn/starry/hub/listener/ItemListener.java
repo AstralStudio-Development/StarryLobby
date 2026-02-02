@@ -3,7 +3,6 @@ package cn.starry.hub.listener;
 import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
 import cn.starry.hub.functions.menu.selector.SelectorMenu;
 import cn.starry.hub.functions.menu.settings.SettingsMenu;
-import cn.starry.hub.functions.menu.store.legacy.StoreMenu;
 import cn.starry.hub.listener.handler.ItemHandler;
 import dev.jnic.annotations.Include;
 import org.bukkit.Bukkit;
@@ -29,7 +28,7 @@ public class ItemListener implements Listener {
             } else if (Item.getType().equals(Material.PLAYER_HEAD) && Item.getItemMeta().getDisplayName().equalsIgnoreCase(ItemHandler.getItem(player,2).getItemMeta().getDisplayName())) {
                 new PlayerProfileMenu().openMenu(player);
             } else if (Item.equals(ItemHandler.getItem(player,1))) {
-                new StoreMenu().openMenu(player);
+                //new StoreMenu().openMenu(player);
             } else if (Item.equals(ItemHandler.getItem(player,6))) {
                 //new PrototypeMenu().openMenu(player);
             } else if (Item.getType().equals(Material.CHEST) && Item.getItemMeta().getDisplayName().equalsIgnoreCase(ItemHandler.getItem(player,3).getItemMeta().getDisplayName())) {

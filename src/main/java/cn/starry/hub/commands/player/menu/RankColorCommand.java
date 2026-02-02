@@ -21,7 +21,7 @@ public class RankColorCommand extends Command {
             return true;
         }
         Player player = (Player) commandSender;
-        new RankColorMenu().openMenu(player,true);
+        new RankColorMenu().openMenu(player);
         return true;
     }
 }

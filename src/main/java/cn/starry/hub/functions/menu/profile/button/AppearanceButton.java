@@ -4,6 +4,7 @@ import cn.starry.core.utils.ItemBuilder;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.functions.menu.profile.CustomViewMenu;
 import cn.starry.hub.utils.menu.Button;
+import cn.starry.hub.utils.menu.Menu;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -15,6 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppearanceButton extends Button {
+
+    private Menu parent;
+
+    public AppearanceButton(Menu parent) {
+        this.parent = parent;
+    }
+
+    public AppearanceButton() {
+        this(null);
+    }
 
     @Override
     public ItemStack getButtonItem(Player player) {
@@ -33,6 +44,6 @@ public class AppearanceButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton, ItemStack currentItem) {
-        new CustomViewMenu().openMenu(player);
+        new CustomViewMenu(parent).openMenu(player);
     }
 }
