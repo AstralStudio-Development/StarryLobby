@@ -1,7 +1,0 @@
-name: StarryLobby
-version: '1.8.1-Renascence'
-main: cn.starry.hub.StarryLobby
-authors: [ Stalyer, Qlickly_ ]
-description: "Process optimization."
-softdepend: [ AstralCore, PlayerPoints, LuckPerms, PlaceHolderAPI, ProtocolLib, Citizens, AuthMe, MasterControl ]
-api-version: 1.21
