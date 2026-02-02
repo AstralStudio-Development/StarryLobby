@@ -44,15 +44,18 @@ public class AchievementsButtons {
                 }
             }
         }
-        lores.add("&8" + achievementType.getDisplayName());
-        lores.add("&7已解锁:&b" + unlockedAchievements + "&7/&b" + totalAchievements + " &8(" + numberFormat.format((float) unlockedAchievements / (float) totalAchievements * 100) + "%) ");
-        lores.add("&7点数:&e" + availablePoints + "&7/&e" + totalPoints + " &8(" + numberFormat.format((float) availablePoints / (float) totalPoints * 100) + "%) ");
+        lores.add("   &a挑战成就   ");
         lores.add(" ");
-        lores.add("&7挑战成就可一次性完成。");
+        lores.add("   &8" + achievementType.getDisplayName() + "   ");
+        lores.add("   &7已解锁 &b" + unlockedAchievements + "&7/&b" + totalAchievements + " &8(" + numberFormat.format((float) unlockedAchievements / (float) totalAchievements * 100) + "%)   ");
+        lores.add("   &7点数 &e" + availablePoints + "&7/&e" + totalPoints + " &8(" + numberFormat.format((float) availablePoints / (float) totalPoints * 100) + "%)   ");
         lores.add(" ");
-        lores.add("&e点击查看成就！");
+        lores.add("   &7挑战成就可一次性完成   ");
+        lores.add(" ");
+        lores.add("   &a+ &f点击查看成就   ");
+        lores.add(" ");
 
-        item = new ItemBuilder(Material.DIAMOND).name(CC.translate("&a挑战成就")).lore(lores).build();
+        item = new ItemBuilder(Material.DIAMOND).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
@@ -61,15 +64,19 @@ public class AchievementsButtons {
 
     public ItemStack GradeButton(Player player,AchievementType achievementType) {
         List<String> lores = new ArrayList<>();
-        lores.add("&8" + achievementType.getDisplayName());
-        lores.add("&7已解锁:&bN&7/&bA ");
-        lores.add("&7点数:&eN&7/&eA ");
+        lores.add("   &a分级成就   ");
         lores.add(" ");
-        lores.add("&7分级成就需要完成多个级别的成就。");
+        lores.add("   &8" + achievementType.getDisplayName() + "   ");
+        lores.add("   &7已解锁 &bN&7/&bA   ");
+        lores.add("   &7点数 &eN&7/&eA   ");
         lores.add(" ");
-        lores.add("&c此分类即将开放！");
+        lores.add("   &7分级成就需要   ");
+        lores.add("   &7完成多个级别的成就   ");
+        lores.add(" ");
+        lores.add("   &c此分类即将开放   ");
+        lores.add(" ");
 
-        item = new ItemBuilder(Material.DIAMOND_BLOCK).name(CC.translate("&a分级成就")).lore(lores).build();
+        item = new ItemBuilder(Material.DIAMOND_BLOCK).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
@@ -105,31 +112,38 @@ public class AchievementsButtons {
         }
         List<String> lores = new ArrayList<>();
         if (id == 0 || id == 1 || id == 2 && achievementType != null) {
-            lores.add("&8" + achievementType.getDisplayName());
+            lores.add("   &8" + achievementType.getDisplayName() + "   ");
         } else {
             if (id != 3) {
-                lores.add("&7玩家:" + RankUtil.getFormatRankById(Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rank"),player.getUniqueId()) + player.getDisplayName());
+                lores.add("   &a成就完成进度   ");
+                lores.add(" ");
+                lores.add("   &7玩家 " + RankUtil.getFormatRankById(Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rank"),player.getUniqueId()) + player.getDisplayName() + "   ");
             }
         }
-        lores.add("&7已解锁:&b" + unlockedAchievements + "&7/&b" + totalAchievements + " &8(" + numberFormat.format((float) unlockedAchievements / (float) totalAchievements * 100) + "%) ");
-        lores.add("&7点数:&e" + availablePoints + "&7/&e" + totalPoints + " &8(" + numberFormat.format((float) availablePoints / (float) totalPoints * 100) + "%) ");
+        lores.add("   &7已解锁 &b" + unlockedAchievements + "&7/&b" + totalAchievements + " &8(" + numberFormat.format((float) unlockedAchievements / (float) totalAchievements * 100) + "%)   ");
+        lores.add("   &7点数 &e" + availablePoints + "&7/&e" + totalPoints + " &8(" + numberFormat.format((float) availablePoints / (float) totalPoints * 100) + "%)   ");
+        lores.add(" ");
         if (id == 3 && achievementType != null) {
-            lores.add("&e点击查看成就！");
+            lores.add("   &a+ &f点击查看成就   ");
+            lores.add(" ");
         }
         if (id == 0) {
-            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate("&a总完成度")).lore(lores).build();
+            lores.add("   &a总完成度   ");
+            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
             return item;
         } else if (id == 1) {
-            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate("&a挑战成就")).lore(lores).build();
+            lores.add("   &a挑战成就   ");
+            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
             return item;
         } else if (id == 2) {
-            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate("&a分级成就")).lore(lores).build();
+            lores.add("   &a分级成就   ");
+            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
@@ -141,7 +155,7 @@ public class AchievementsButtons {
             item.setItemMeta(meta);
             return item;
         } else {
-            item = new ItemBuilder(Material.DIAMOND).name(CC.translate("&aYumeGames成就完成进度")).lore(lores).build();
+            item = new ItemBuilder(Material.DIAMOND).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
@@ -152,11 +166,17 @@ public class AchievementsButtons {
     public ItemStack Back(AchievementType achievementType) {
         List<String> lores = new ArrayList<>();
         if (achievementType != null) {
-            lores.add("&7返回至" + achievementType.getDisplayName());
+            lores.add("   &a返回   ");
+            lores.add(" ");
+            lores.add("   &7返回至" + achievementType.getDisplayName() + "   ");
+            lores.add(" ");
         } else {
-            lores.add("&7返回至成就");
+            lores.add("   &a返回   ");
+            lores.add(" ");
+            lores.add("   &7返回至成就   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.ARROW).name(CC.translate("&a返回")).lore(lores).build();
+        item = new ItemBuilder(Material.ARROW).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -164,8 +184,11 @@ public class AchievementsButtons {
 
     public ItemStack BackToProfile() {
         List<String> lores = new ArrayList<>();
-        lores.add("&7返回至个人档案");
-        item = new ItemBuilder(Material.ARROW).name(CC.translate("&a返回")).lore(lores).build();
+        lores.add("   &a返回   ");
+        lores.add(" ");
+        lores.add("   &7返回至个人档案   ");
+        lores.add(" ");
+        item = new ItemBuilder(Material.ARROW).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -175,17 +198,19 @@ public class AchievementsButtons {
         List<String> lores = new ArrayList<>();
         List<String> description = achievement.getDescription();
         if (achievement.isHidden() && !AchievementManager.isUnlocked(player,achievement)) {
+            lores.add(" ");
             lores.add("&7？？？");
         } else {
             lores.addAll(description);
             lores.add(" ");
-            lores.add("&7奖励");
-            lores.add("&8+&e" + achievement.getPoints() + "点&7成就点数");
+            lores.add("   &7奖励   ");
+            lores.add("   &8+ &e" + achievement.getPoints() + " &7成就点数   ");
         }
         lores.add(" ");
-        lores.add("&7已被" + Core.getInstance().getMongoDB().getPercentageOfAchievement(achievement.getInternalName()) + "%的玩家解锁");
+        lores.add("   &7已被 &f" + Core.getInstance().getMongoDB().getPercentageOfAchievement(achievement.getInternalName()) + " %&7的玩家解锁   ");
         lores.add(" ");
-        lores.add(AchievementManager.isUnlocked(player,achievement) ? "&a成就已解锁！" : "&c成就尚未解锁！");
+        lores.add(AchievementManager.isUnlocked(player,achievement) ? "   &a成就已解锁   " : "   &c成就尚未解锁   ");
+        lores.add(" ");
 
         if (AchievementManager.isUnlocked(player,achievement)) {
             if (achievement.isPremium()) {
@@ -216,9 +241,12 @@ public class AchievementsButtons {
 
     public ItemStack toOtherPage(Player player) {
         List<String> lores = new ArrayList<>();
-        lores.add("&7点击查看综合分级成就");
-        lores.add("&c此功能仍在开发,将于未来一段时间内上线");
-        item = new ItemBuilder(Material.DIAMOND_BLOCK).name(CC.translate("&a前往分级成就")).lore(lores).build();
+        lores.add("   &a前往分级成就   ");
+        lores.add(" ");
+        lores.add("   &7点击查看综合分级成就   ");
+        lores.add("   &c此功能仍在开发,将于未来一段时间内上线   ");
+        lores.add(" ");
+        item = new ItemBuilder(Material.DIAMOND_BLOCK).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;

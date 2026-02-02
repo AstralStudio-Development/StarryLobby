@@ -23,14 +23,14 @@ public class AchievementsMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        buttons.put(1, new AchievementCategoryButton(AchievementType.GENERAL));
-        buttons.put(10, new AchievementCategoryButton(AchievementType.BEDWARS));
-        buttons.put(11, new AchievementCategoryButton(AchievementType.PIT));
-        buttons.put(12, new AchievementCategoryButton(AchievementType.SKYWARS));
-        buttons.put(13, new AchievementCategoryButton(AchievementType.DUELS));
+        buttons.put(13, new AchievementCategoryButton(AchievementType.GENERAL));
+        buttons.put(20, new AchievementCategoryButton(AchievementType.BEDWARS));
+        buttons.put(21, new AchievementCategoryButton(AchievementType.PIT));
+        buttons.put(23, new AchievementCategoryButton(AchievementType.SKYWARS));
+        buttons.put(24, new AchievementCategoryButton(AchievementType.DUELS));
 
-        buttons.put(30, new BackToProfileButton());
-        buttons.put(31, new AchievementSummaryButton());
+        buttons.put(39, new BackToProfileButton());
+        buttons.put(41, new AchievementSummaryButton());
 
         return buttons;
     }

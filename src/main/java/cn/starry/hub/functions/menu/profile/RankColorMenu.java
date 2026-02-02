@@ -20,7 +20,7 @@ public class RankColorMenu implements Listener {
 
     private Inventory inv;
 
-    String title = CC.translate("自定义颜色");
+    String title = CC.translate("               &0自定义颜色     ");
 
     public void openMenu(Player player,boolean isByCommand) {
         if (player.hasPermission(Permission.PREMIUM.getNode())) {
@@ -34,7 +34,7 @@ public class RankColorMenu implements Listener {
     }
 
     public void init(Player player,boolean isByCommand) {
-        this.inv = Bukkit.createInventory(null, 45, title);
+        this.inv = Bukkit.createInventory(null, 54, title);
 
         this.inv.setItem(10, new RankColorButtons().Red_ColorButton(player));
         this.inv.setItem(11, new RankColorButtons().Gold_ColorButton(player));
@@ -94,10 +94,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Gold_ColorButton(player))) {
@@ -106,10 +106,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Green_ColorButton(player))) {
@@ -118,10 +118,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Yellow_ColorButton(player))) {
@@ -130,10 +130,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Pink_ColorButton(player))) {
@@ -142,10 +142,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().White_ColorButton(player))) {
@@ -154,10 +154,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Blue_ColorButton(player))) {
@@ -166,10 +166,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Dark_Green_ColorButton(player))) {
@@ -178,10 +178,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Dark_Red_ColorButton(player))) {
@@ -190,10 +190,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Cyan_ColorButton(player))) {
@@ -202,10 +202,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Purple_ColorButton(player))) {
@@ -214,10 +214,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Black_ColorButton(player))) {
@@ -226,10 +226,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Dark_Blue_ColorButton(player))) {
@@ -238,10 +238,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         if (e.getCurrentItem().equals(new RankColorButtons().Gray_ColorButton(player))) {
@@ -250,10 +250,10 @@ public class RankColorMenu implements Listener {
             if (!Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
                 Core.getInstance().getMongoDB().updatePlayerData(player.getUniqueId(),"rankColor",rankColors.toString());
                 player.playSound(player.getLocation(),Sound.ENTITY_ARROW_HIT_PLAYER,1,1);
-                player.sendMessage(CC.translate("&a已更新你的Rank颜色！"));
+                player.sendTitle(CC.translate("&a更换成功"),(CC.translate("&f已成功更新颜色")),10,10,10);
             } else {
                 player.playSound(player.getLocation(),Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-                player.sendMessage(CC.translate("&c已选择此项！"));
+                player.sendTitle(CC.translate("&c更换失败"),(CC.translate("&f当前已经为此颜色")),10,10,10);
             }
         }
         e.setCancelled(true);

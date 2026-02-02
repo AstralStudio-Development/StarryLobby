@@ -17,11 +17,15 @@ public class AccountStatusButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
-        lores.add("&7查看你的处罚记录和当前账号状态");
+        lores.add("   &a账号状态   ");
         lores.add(" ");
-        lores.add("&e点击查看！");
+        lores.add("   &7查看你的处罚记录   ");
+        lores.add("   &7和当前账号信用状态   ");
+        lores.add(" ");
+        lores.add("   &a+ &f点击查看   ");
+        lores.add(" ");
 
-        return new ItemBuilder(Material.ANVIL).name(CC.translate("&a账号状态")).lore(lores).build();
+        return new ItemBuilder(Material.ANVIL).name(CC.translate(" ")).lore(lores).build();
     }
 
     @Override

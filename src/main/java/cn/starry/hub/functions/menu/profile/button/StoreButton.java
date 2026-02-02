@@ -20,15 +20,22 @@ public class StoreButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
-        lores.add(PlaceholderAPI.setPlaceholders(player, "&7从这里查看货摊！"));
+        lores.add("   &a货摊   ");
+        lores.add(" ");
+        lores.add("   &7你可以从这获得   ");
+        lores.add("   &7各种各样的权益内容   ");
+        lores.add("   &f服务器会员   ");
+        lores.add("   &f硬币倍增器   ");
+        lores.add("   &f拓展内容等   ");
         lores.add(" ");
         if (!NickUtil.isNicked(player.getUniqueId())) {
-            lores.add(PlaceholderAPI.setPlaceholders(player, StarryLobby.getInstance().economy ? "&7璀璨星尘: &b%playerpoints_points%" : "&7璀璨星尘: &8已禁用"));
-            lores.add(" ");
+            lores.add(PlaceholderAPI.setPlaceholders(player, StarryLobby.getInstance().economy ? "   &7璀璨星尘 &b%playerpoints_points%   " : "   &7璀璨星尘 &8已禁用   "));
         }
-        lores.add("&c前往大厅内的货摊NPC查看");
+        lores.add(" ");
+        lores.add("   &a+ &f点击查看   ");
+        lores.add(" ");
 
-        return new ItemBuilder(Material.NAME_TAG).name(CC.translate("&a货摊")).lore(lores).shiny().build();
+        return new ItemBuilder(Material.NAME_TAG).name(CC.translate(" ")).lore(lores).shiny().build();
     }
 
     @Override

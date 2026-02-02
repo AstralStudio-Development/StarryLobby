@@ -16,11 +16,15 @@ public class CustomViewButtons {
 
     public ItemStack RankColor() {
         List<String> lores = new ArrayList<>();
-        lores.add("&7拥有&bMVP&c+&7的玩家可以切换“+”的颜色");
+        lores.add("   &aStar+等级颜色   ");
+        lores.add(" ");
+        lores.add("   &7拥有 &bStar&c+   ");
+        lores.add("   &7的玩家可以切换“+”的颜色   ");
         lores.add("");
-        lores.add("&e点击切换！");
+        lores.add("   &a+ &f点击切换   ");
+        lores.add("");
 
-        item = new ItemBuilder(Material.LEGACY_INK_SACK).name(CC.translate("&aMVP+等级颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.LEGACY_INK_SACK).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -28,14 +32,15 @@ public class CustomViewButtons {
 
     public ItemStack Shine() {
         List<String> lores = new ArrayList<>();
-        lores.add("&7你的角色将会基于你的会员颜色染上轮廓。");
+        lores.add("   &a人物发光   ");
+        lores.add(" ");
+        lores.add("   &7你的角色将会基于   ");
+        lores.add("   &7你的会员颜色染上轮廓   ");
         lores.add("");
-        lores.add("&c请注意:&7发光效果只会对使用Minecraft");
-        lores.add("&71.9+版本的玩家可见！");
+        lores.add("   &c此功能将在数个版本内上线   ");
         lores.add("");
-        lores.add("&c此功能将在数个版本内上线");
 
-        item = new ItemBuilder(Material.PRISMARINE_CRYSTALS).name(CC.translate("&a发光")).lore(lores).build();
+        item = new ItemBuilder(Material.PRISMARINE_CRYSTALS).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -43,9 +48,12 @@ public class CustomViewButtons {
 
     public ItemStack Back() {
         List<String> lores = new ArrayList<>();
-        lores.add("&7返回至个人档案");
+        lores.add("   &a返回   ");
+        lores.add("");
+        lores.add("   &7返回至个人档案   ");
+        lores.add("");
 
-        item = new ItemBuilder(Material.ARROW).name(CC.translate("&a返回")).lore(lores).build();
+        item = new ItemBuilder(Material.ARROW).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;

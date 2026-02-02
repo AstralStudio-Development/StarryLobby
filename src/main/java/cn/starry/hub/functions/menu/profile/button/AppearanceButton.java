@@ -8,6 +8,7 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -18,14 +19,16 @@ public class AppearanceButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
+        lores.add("   &a自定义外观   ");
         lores.add(" ");
-        lores.add("&7为你的人物自定义外观！");
-        lores.add("&f• MVP+ 会员等级颜色");
-        lores.add("&f• 发光");
+        lores.add("   &7为你的形象自定义外观   ");
+        lores.add("   &fStar+ 会员等级颜色   ");
+        lores.add("   &f人物发光   ");
         lores.add(" ");
-        lores.add("&e点击查看！");
+        lores.add("   &a+ &f点击查看   ");
+        lores.add(" ");
 
-        return new ItemBuilder(Material.LEATHER_CHESTPLATE).name(CC.translate("&a自定义外观")).lore(lores).setLetherColor(Color.BLUE).build();
+        return new ItemBuilder(Material.LEATHER_CHESTPLATE).flags(ItemFlag.HIDE_ATTRIBUTES,ItemFlag.HIDE_DYE).name(CC.translate(" ")).lore(lores).setLetherColor(Color.BLUE).build();
     }
 
     @Override

@@ -17,12 +17,15 @@ public class AchievementButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
-        lores.add("&7查看你成就解锁的进度");
-        lores.add("&7以及成就点数");
+        lores.add("   &a游戏成就   ");
         lores.add(" ");
-        lores.add("&e点击查看你的成就！");
+        lores.add("   &7查看你成就解锁的进度   ");
+        lores.add("   &7以及成就点数   ");
+        lores.add(" ");
+        lores.add("   &a+ &f点击查看   ");
+        lores.add(" ");
 
-        return new ItemBuilder(Material.DIAMOND).name(CC.translate("&a成就")).lore(lores).build();
+        return new ItemBuilder(Material.DIAMOND).name(CC.translate(" ")).lore(lores).build();
     }
 
     @Override

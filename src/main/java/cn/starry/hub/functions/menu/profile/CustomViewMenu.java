@@ -24,12 +24,12 @@ public class CustomViewMenu implements Listener {
     }
 
     public void init(Player player) {
-        this.inv = Bukkit.createInventory(null, 36, title);
+        this.inv = Bukkit.createInventory(null, 54, title);
 
-        this.inv.setItem(11, new CustomViewButtons().RankColor());
-        this.inv.setItem(15, new CustomViewButtons().Shine());
+        this.inv.setItem(20, new CustomViewButtons().RankColor());
+        this.inv.setItem(24, new CustomViewButtons().Shine());
 
-        this.inv.setItem(31, new CustomViewButtons().Back());
+        this.inv.setItem(40, new CustomViewButtons().Back());
 
         player.openInventory(this.inv);
     }

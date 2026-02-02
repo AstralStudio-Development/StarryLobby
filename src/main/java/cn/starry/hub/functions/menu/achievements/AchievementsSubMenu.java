@@ -19,18 +19,18 @@ public class AchievementsSubMenu extends Menu {
     @Override
     public String getTitle(Player player) {
         AchievementType achievementType = CacheData.ACHIEVEMENT_MENU.get(player);
-        return CC.translate(achievementType.getDisplayName() + "成就");
+        return CC.translate("                  " + achievementType.getDisplayName());
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        buttons.put(11, new ChallengeCategoryButton());
-        buttons.put(15, new GradeCategoryButton());
+        buttons.put(21, new ChallengeCategoryButton());
+        buttons.put(23, new GradeCategoryButton());
 
-        buttons.put(30, new BackToAchievementsButton());
-        buttons.put(31, new SubMenuSummaryButton());
+        buttons.put(39, new BackToAchievementsButton());
+        buttons.put(41, new SubMenuSummaryButton());
 
         return buttons;
     }

@@ -21,8 +21,11 @@ public class RankColorButtons {
 
     public ItemStack Back() {
         List<String> lores = new ArrayList<>();
-        lores.add("&7返回至自定义外观");
-        item = new ItemBuilder(Material.ARROW).name(CC.translate("&a返回")).lore(lores).build();
+        lores.add("   &a返回   ");
+        lores.add(" ");
+        lores.add("   &7返回至自定义外观   ");
+        lores.add(" ");
+        item = new ItemBuilder(Material.ARROW).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -38,14 +41,18 @@ public class RankColorButtons {
     public ItemStack Red_ColorButton(Player player) {
         RankColors rankColors = RankColors.RED;
         List<String> lores = new ArrayList<>();
-        lores.add("&bMVP&c+&7的默认颜色。");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
+        lores.add("");
+        lores.add("   &bStar&c+&7 的默认颜色   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.RED_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.RED_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -54,18 +61,22 @@ public class RankColorButtons {
     public ItemStack Gold_ColorButton(Player player) {
         RankColors rankColors = RankColors.GOLD;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.ORANGE_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.ORANGE_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -74,18 +85,23 @@ public class RankColorButtons {
     public ItemStack Green_ColorButton(Player player) {
         RankColors rankColors = RankColors.GREEN;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
+            
         }
-        item = new ItemBuilder(Material.LIME_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.LIME_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -94,18 +110,22 @@ public class RankColorButtons {
     public ItemStack Yellow_ColorButton(Player player) {
         RankColors rankColors = RankColors.YELLOW;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.YELLOW_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.YELLOW_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -114,18 +134,23 @@ public class RankColorButtons {
     public ItemStack Pink_ColorButton(Player player) {
         RankColors rankColors = RankColors.PINK;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
+            lores.add("");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.PINK_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.PINK_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -134,18 +159,22 @@ public class RankColorButtons {
     public ItemStack White_ColorButton(Player player) {
         RankColors rankColors = RankColors.WHITE;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.WHITE_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.WHITE_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -154,18 +183,22 @@ public class RankColorButtons {
     public ItemStack Blue_ColorButton(Player player) {
         RankColors rankColors = RankColors.BLUE;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.LIGHT_BLUE_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.LIGHT_BLUE_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -174,18 +207,22 @@ public class RankColorButtons {
     public ItemStack Dark_Green_ColorButton(Player player) {
         RankColors rankColors = RankColors.DARK_GREEN;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.GREEN_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.GREEN_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -194,18 +231,22 @@ public class RankColorButtons {
     public ItemStack Dark_Red_ColorButton(Player player) {
         RankColors rankColors = RankColors.DARK_RED;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.REDSTONE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.REDSTONE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -214,18 +255,22 @@ public class RankColorButtons {
     public ItemStack Cyan_ColorButton(Player player) {
         RankColors rankColors = RankColors.CYAN;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.CYAN_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.CYAN_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -234,18 +279,22 @@ public class RankColorButtons {
     public ItemStack Purple_ColorButton(Player player) {
         RankColors rankColors = RankColors.PURPURE;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.PURPLE_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.PURPLE_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -254,18 +303,22 @@ public class RankColorButtons {
     public ItemStack Gray_ColorButton(Player player) {
         RankColors rankColors = RankColors.GRAY;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.GRAY_DYE).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.GRAY_DYE).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -274,18 +327,22 @@ public class RankColorButtons {
     public ItemStack Black_ColorButton(Player player) {
         RankColors rankColors = RankColors.BLACK;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.INK_SAC).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.INK_SAC).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
@@ -294,18 +351,22 @@ public class RankColorButtons {
     public ItemStack Dark_Blue_ColorButton(Player player) {
         RankColors rankColors = RankColors.DARK_BLUE;
         List<String> lores = new ArrayList<>();
-        lores.add("&7在&bMVP&c+&7处改变“+”的颜色");
-        lores.add("&7为" + rankColors.getColorChinese() + "，将它变为&bMVP&" + rankColors.getColorChar() + "+");
+        lores.add(CC.translate("   &a" + rankColors.getColorChinese() + "色会员颜色   "));
         lores.add("");
-        lores.add("&7在TAB列表，聊天中");
-        lores.add("&7与进入大厅时显示。");
+        lores.add("   &7在&bStar&c+&7处改变“+”的颜色   ");
+        lores.add("   &7为" + rankColors.getColorChinese() + "色，将它变为&bStar&" + rankColors.getColorChar() + "+   ");
+        lores.add("");
+        lores.add("   &7在TAB列表，聊天中   ");
+        lores.add("   &7与进入大厅时展示   ");
         lores.add("");
         if (Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rankColor").equalsIgnoreCase(rankColors.toString())) {
-            lores.add("&a已选择！");
+            lores.add("   &a当前已选择   ");
+            lores.add(" ");
         } else {
-            lores.add("&e点击选择！");
+            lores.add("   &a+ &f点击选择   ");
+            lores.add(" ");
         }
-        item = new ItemBuilder(Material.LAPIS_LAZULI).name(CC.translate("&a" + rankColors.getColorChinese() + "色会员颜色")).lore(lores).build();
+        item = new ItemBuilder(Material.LAPIS_LAZULI).name(CC.translate(" ")).lore(lores).build();
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
