@@ -101,11 +101,7 @@ public class SettingsMenu extends Menu {
                 break;
         }
 
-        if (parent != null) {
             button.put(49, new BackButton(parent));
-        } else {
-            button.put(49, new CloseButton());
-        }
 
         return button;
     }

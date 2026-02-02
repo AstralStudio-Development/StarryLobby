@@ -2,6 +2,7 @@ package cn.starry.hub.functions.menu.store;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.functions.menu.buttons.StoreButtons;
+import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
 import cn.starry.hub.functions.menu.store.legacy.sub.CommodityMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -16,7 +17,7 @@ public class DLCStoreMenu implements Listener {
 
     private Inventory inv;
 
-    String title = CC.translate("拓展内容");
+    String title = CC.translate("                &0拓展内容");
 
     public void openMenu(Player player) {
         this.init(player);
@@ -38,7 +39,7 @@ public class DLCStoreMenu implements Listener {
 
         this.inv.setItem(31,new StoreButtons().getUnavailable());
 
-        this.inv.setItem(48,new StoreButtons().Close());
+        this.inv.setItem(48,new StoreButtons().Back());
         this.inv.setItem(49,new StoreButtons().getPoint());
 
         player.openInventory(this.inv);
@@ -71,8 +72,8 @@ public class DLCStoreMenu implements Listener {
             player.closeInventory();
             player.sendMessage(CC.translate("&c暂不支持充值服务器"));
         }
-        if (e.getCurrentItem().equals(new StoreButtons().Close())) {
-            player.closeInventory();
+        if (e.getCurrentItem().equals(new StoreButtons().Back())) {
+            new PlayerProfileMenu().openMenu(player);
         }
         //
         if (e.getCurrentItem().equals(new StoreButtons().getRank())) {

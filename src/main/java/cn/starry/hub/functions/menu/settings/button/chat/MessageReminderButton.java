@@ -35,19 +35,28 @@ public class MessageReminderButton extends Button {
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
         boolean isChoose = Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"settings_chat_reminder").equalsIgnoreCase("TRUE");
-        lores.add("&7设置你在聊天中被提及时是否开启声音提示和文本高亮。");
-        lores.add(" ");
+
         if (isChoose) {
-            lores.add("&7当前 &a已启用");
+            lores.add("   &a提及提醒   ");
+            lores.add("   &7设置你在聊天中被提及时   ");
+            lores.add("   &7是否开启声音提示和文本高亮   ");
             lores.add(" ");
-            lores.add("&e点击禁用！");
+            lores.add("   &7当前 &a已启用   ");
+            lores.add(" ");
+            lores.add("   &c- &f点击禁用   ");
+            lores.add(" ");
         } else {
-            lores.add("&7当前 &c已禁用");
+            lores.add("   &c提及提醒   ");
+            lores.add("   &7设置你在聊天中被提及时   ");
+            lores.add("   &7是否开启声音提示和文本高亮   ");
             lores.add(" ");
-            lores.add("&e点击启用！");
+            lores.add("   &7当前 &c已禁用   ");
+            lores.add(" ");
+            lores.add("   &a+ &f点击启用   ");
+            lores.add(" ");
         }
 
-        return new ItemBuilder(isButton ? Material.JUKEBOX : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + "聊天提醒").lore(lores).build();
+        return new ItemBuilder(isButton ? Material.JUKEBOX : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + " ").lore(lores).build();
     }
 
     @Override

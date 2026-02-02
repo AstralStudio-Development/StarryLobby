@@ -16,7 +16,7 @@ public class CustomViewMenu implements Listener {
 
     private Inventory inv;
 
-    String title = CC.translate("自定义外观");
+    String title = CC.translate("               &0自定义外观");
 
     public void openMenu(Player player) {
         this.init(player);

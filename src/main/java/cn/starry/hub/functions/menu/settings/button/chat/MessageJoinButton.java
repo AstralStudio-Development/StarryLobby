@@ -36,26 +36,40 @@ public class MessageJoinButton extends Button {
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
         boolean isChoose = Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"settings_chat_joinmessage").equalsIgnoreCase("TRUE");
-        lores.add("&7设置是否在你加入大厅时发送加入消息。");
-        lores.add(" ");
+
+        if (isChoose ) {
+            lores.add("   &a加入信息   ");
+            lores.add(" ");
+            lores.add("   &7设置是否在你   ");
+            lores.add("   &7加入大厅时发送加入消息   ");
+            lores.add(" ");
+        } else {
+            lores.add("   &c加入信息   ");
+            lores.add(" ");
+            lores.add("   &7设置是否在你   ");
+            lores.add("   &7加入大厅时发送加入消息   ");
+            lores.add(" ");
+        }
         if (player.hasPermission(Permission.PREMIUM.getNode())) {
-            lores.add("&a需要&bMVP&c+");
+            lores.add("   &7此功能需要 &bStar&c+   ");
             lores.add("");
         } else {
-            lores.add("&c需要&bMVP&c+");
+            lores.add("   &7此功能需要 &bStar&c+   ");
             lores.add("");
         }
         if (isChoose) {
-            lores.add("&7当前： &a已启用");
+            lores.add("   &7当前 &a已启用   ");
             lores.add(" ");
-            lores.add("&e点击禁用！");
+            lores.add("   &c- &f点击禁用   ");
+            lores.add(" ");
         } else {
-            lores.add("&7当前： &c已禁用");
+            lores.add("   &7当前 &c已禁用   ");
             lores.add(" ");
-            lores.add("&e点击启用！");
+            lores.add("   &a+ &f点击启用   ");
+            lores.add(" ");
         }
 
-        return new ItemBuilder(isButton ? Material.PAPER : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + "发送大厅加入信息").lore(lores).build();
+        return new ItemBuilder(isButton ? Material.PAPER : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + " ").lore(lores).build();
     }
 
     @Override

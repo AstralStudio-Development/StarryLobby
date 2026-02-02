@@ -38,9 +38,6 @@ public class SettingTypeButton extends Button {
         Material material;
         String typeDisplayName;
 
-        List<String> lores = new ArrayList<>();
-        lores.add("&e点击浏览！");
-
         switch (typeID) {
             case 0:
                 material = Material.NETHER_STAR;
@@ -60,11 +57,7 @@ public class SettingTypeButton extends Button {
                 break;
         }
 
-        if (isAlready) {
             item = new ItemBuilder(material).name(typeDisplayName).build();
-        } else {
-            item = new ItemBuilder(material).name(typeDisplayName).lore(lores).build();
-        }
 
         return item;
     }

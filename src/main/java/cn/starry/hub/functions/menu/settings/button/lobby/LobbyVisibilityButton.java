@@ -37,19 +37,27 @@ public class LobbyVisibilityButton extends Button {
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
         boolean isChoose = Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"settings_lobby_show").equalsIgnoreCase("TRUE");
-        lores.add("&7设置玩家是否可见。");
-        lores.add(" ");
         if (isChoose) {
-            lores.add("&7当前 &a已启用");
+            lores.add("   &a玩家可见性   ");
             lores.add(" ");
-            lores.add("&e点击禁用！");
+            lores.add("   &7设置玩家是否可见   ");
+            lores.add(" ");
+            lores.add("   &7当前 &a已启用   ");
+            lores.add(" ");
+            lores.add("   &c- &f点击禁用   ");
+            lores.add(" ");
         } else {
-            lores.add("&7当前 &c已禁用");
+            lores.add("   &c玩家可见性   ");
             lores.add(" ");
-            lores.add("&e点击启用！");
+            lores.add("   &7设置玩家是否可见   ");
+            lores.add(" ");
+            lores.add("   &7当前 &c已禁用   ");
+            lores.add(" ");
+            lores.add("   &a+ &f点击启用   ");
+            lores.add(" ");
         }
 
-        return new ItemBuilder(isButton ? Material.CLOCK : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + "玩家可见性").lore(lores).build();
+        return new ItemBuilder(isButton ? Material.CLOCK : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + " ").lore(lores).build();
     }
 
     @Override

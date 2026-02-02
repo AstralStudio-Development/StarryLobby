@@ -36,24 +36,37 @@ public class LobbyLauncherButton extends Button {
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
         boolean isChoose = Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"settings_lobby_launcher").equalsIgnoreCase("TRUE");
-        lores.add("&7设置当你进入虚空时是否使用虚空弹射器。");
-        lores.add(" ");
-        lores.add("&7在当前状态下");
+
         if (isChoose) {
-            lores.add("&7将使用虚空弹射器将你重新弹射回大厅表面。");
+            lores.add("   &a虚空弹射器   ");
             lores.add(" ");
-            lores.add("&7当前 &a已启用");
+            lores.add("   &7设置当你进入虚空时   ");
+            lores.add("   &7是否使用虚空弹射器   ");
             lores.add(" ");
-            lores.add("&e点击禁用！");
+            lores.add("   &7在当前状态下   ");
+            lores.add("   &7将使用虚空弹射器   ");
+            lores.add("   &7把你重新弹射回大厅表面   ");
+            lores.add(" ");
+            lores.add("   &7当前 &a已启用   ");
+            lores.add(" ");
+            lores.add("   &c- &f点击禁用   ");
+            lores.add(" ");
         } else {
-            lores.add("&7将直接将你传送回出生点。");
+            lores.add("   &c虚空弹射器   ");
             lores.add(" ");
-            lores.add("&7当前 &c已禁用");
+            lores.add("   &7设置当你进入虚空时   ");
+            lores.add("   &7是否使用虚空弹射器   ");
             lores.add(" ");
-            lores.add("&e点击启用！");
+            lores.add("   &7在当前状态下   ");
+            lores.add("   &7会将你直接传送回出生点   ");
+            lores.add(" ");
+            lores.add("   &7当前 &c已禁用   ");
+            lores.add(" ");
+            lores.add("   &a+ &f点击启用   ");
+            lores.add(" ");
         }
 
-        return new ItemBuilder(isButton ? Material.SLIME_BLOCK : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + "虚空弹射器").lore(lores).build();
+        return new ItemBuilder(isButton ? Material.SLIME_BLOCK : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + "   ").lore(lores).build();
     }
 
     @Override

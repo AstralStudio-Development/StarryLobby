@@ -35,24 +35,37 @@ public class MessageFilterateButton extends Button {
     public ItemStack getButtonItem(Player player) {
         List<String> lores = new ArrayList<>();
         boolean isChoose = Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"settings_chat_filterate").equalsIgnoreCase("TRUE");
-        lores.add("&7设置筛选器对公屏内容的过滤强度。");
-        lores.add(" ");
-        lores.add("&7在当前状态下");
         if (isChoose) {
-            lores.add("&7大多数被认为是不合适的消息将会被自动筛选。");
+            lores.add("   &a聊天过滤   ");
             lores.add(" ");
-            lores.add("&7当前 &a已启用");
+            lores.add("   &7设置筛选器对   ");
+            lores.add("   &7公屏内容的过滤强度   ");
             lores.add(" ");
-            lores.add("&e点击禁用！");
+            lores.add("   &7在当前状态下   ");
+            lores.add("   &7大多数被认为是不合适   ");
+            lores.add("   &7的消息将会被自动筛选   ");
+            lores.add(" ");
+            lores.add("   &7当前 &a已启用   ");
+            lores.add(" ");
+            lores.add("   &c- &f点击禁用   ");
+            lores.add(" ");
         } else {
-            lores.add("&7你将能够看到可能不合适的消息。");
+            lores.add("   &c聊天过滤   ");
             lores.add(" ");
-            lores.add("&7当前 &c已禁用");
+            lores.add("   &7设置筛选器对   ");
+            lores.add("   &7公屏内容的过滤强度   ");
             lores.add(" ");
-            lores.add("&e点击启用！");
+            lores.add("   &7在当前状态下   ");
+            lores.add("   &7你能够看见一些   ");
+            lores.add("   &7不合适的消息   ");
+            lores.add(" ");
+            lores.add("   &7当前 &c已禁用   ");
+            lores.add(" ");
+            lores.add("   &a+ &f点击启用   ");
+            lores.add(" ");
         }
 
-        return new ItemBuilder(isButton ? Material.ANVIL : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + "公屏聊天过滤").lore(lores).build();
+        return new ItemBuilder(isButton ? Material.ANVIL : (isChoose ? Material.LIME_DYE : Material.GRAY_DYE)).name((isChoose ? "&a" : "&c") + " ").lore(lores).build();
     }
 
     @Override

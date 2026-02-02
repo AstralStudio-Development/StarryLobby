@@ -39,27 +39,37 @@ public class LobbyTimeButton extends Button {
         ItemStack timeItemStack = new ItemStack(Material.BARRIER);
 
         List<String> lores = new ArrayList<>();
-        lores.add("&7设置大厅的时间状态。");
-        lores.add(" ");
 
         String type = mongoDB.getPlayerData(player.getUniqueId(),"settings_lobby_time");
 
         if (type.equals("DAY")) {
-            lores.add("&7当前 &a白天");
+            lores.add("   &a大厅时间状态   ");
             lores.add(" ");
-            lores.add("&e下一个选项是 傍晚！");
+            lores.add("   &7设置大厅的时间状态   ");
+            lores.add(" ");
+            lores.add("   &7当前 &a白天   ");
+            lores.add("   &7下一个选项是 &6傍晚");
+            lores.add(" ");
 
             timeItemStack = new ItemStack(Material.RED_DYE);
         } else if (type.equals("SUNSET")) {
-            lores.add("&7当前 &6傍晚");
+            lores.add("   &6大厅时间状态   ");
             lores.add(" ");
-            lores.add("&e下一个选项是 夜晚！");
+            lores.add("   &7设置大厅的时间状态   ");
+            lores.add(" ");
+            lores.add("   &7当前 &6傍晚   ");
+            lores.add("   &7下一个选项是 &b夜晚   ");
+            lores.add(" ");
 
             timeItemStack = new ItemStack(Material.ORANGE_DYE);
         } else if (type.equals("NIGHT")) {
-            lores.add("&7当前 &8夜晚");
+            lores.add("   &b大厅时间状态   ");
             lores.add(" ");
-            lores.add("&e下一个选项是 白天！");
+            lores.add("   &7设置大厅的时间状态   ");
+            lores.add(" ");
+            lores.add("   &7当前 &b夜晚   ");
+            lores.add("   &f下一个选项是 &a白天   ");
+            lores.add("  ");
 
             timeItemStack = new ItemStack(Material.INK_SAC);
         } else {
@@ -67,7 +77,7 @@ public class LobbyTimeButton extends Button {
             player.sendMessage(CC.translate("&c请将错误截图反馈至管理员"));
         }
 
-        return new ItemBuilder(isButton ? new ItemStack(Material.REDSTONE_LAMP) : timeItemStack).name("&a大厅时间状态").lore(lores).build();
+        return new ItemBuilder(isButton ? new ItemStack(Material.REDSTONE_LAMP) : timeItemStack).name(" ").lore(lores).build();
     }
 
     @Override

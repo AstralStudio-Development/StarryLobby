@@ -14,7 +14,7 @@ public class PlayerProfileMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate("               &0个人档案     ");
+        return CC.translate("              &0个人档案     ");
     }
 
     @Override
@@ -22,11 +22,11 @@ public class PlayerProfileMenu extends Menu {
         Map<Integer, Button> buttons = new HashMap<>();
 
         buttons.put(13, new ProfileButton());
-        buttons.put(20, new AppearanceButton());
-        buttons.put(21, new AchievementButton());
-        buttons.put(22, new AccountStatusButton());
-        buttons.put(23, new SettingsButton());
-        buttons.put(24, new StoreButton());
+        buttons.put(29, new AppearanceButton());
+        buttons.put(30, new AchievementButton());
+        buttons.put(31, new AccountStatusButton());
+        buttons.put(32, new SettingsButton());
+        buttons.put(33, new StoreButton());
 
         return buttons;
     }
