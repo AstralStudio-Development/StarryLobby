@@ -29,7 +29,7 @@ public class AchievementsSubMenu extends Menu {
     @Override
     public String getTitle(Player player) {
         AchievementType achievementType = CacheData.ACHIEVEMENT_MENU.get(player);
-        return CC.translate("                  " + achievementType.getDisplayName());
+        return CC.translate("                " + achievementType.getDisplayName());
     }
 
     @Override

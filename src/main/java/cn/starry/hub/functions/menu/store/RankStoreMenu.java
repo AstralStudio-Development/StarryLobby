@@ -34,9 +34,9 @@ public class RankStoreMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        buttons.put(0, new StoreCategoryButton(StoreCategoryButton.Category.RANK, parent));
-        buttons.put(1, new StoreCategoryButton(StoreCategoryButton.Category.BOOSTER, parent));
-        buttons.put(2, new StoreCategoryButton(StoreCategoryButton.Category.DLC, parent));
+        buttons.put(3, new StoreCategoryButton(StoreCategoryButton.Category.RANK, parent));
+        buttons.put(4, new StoreCategoryButton(StoreCategoryButton.Category.BOOSTER, parent));
+        buttons.put(5, new StoreCategoryButton(StoreCategoryButton.Category.DLC, parent));
 
         for (int i = 9; i < 18; i++) {
             buttons.put(i, new StoreGlassButton(false));
@@ -44,7 +44,7 @@ public class RankStoreMenu extends Menu {
 
         // Highlight the active category (Rank is index 0, so slot 9 should be active?)
         // In original code: this.inv.setItem(9,new StoreButtons().GlassButton(true));
-        buttons.put(9, new StoreGlassButton(true));
+        buttons.put(12, new StoreGlassButton(true));
 
         buttons.put(31, new UnavailableButton());
 

@@ -1,7 +1,6 @@
-package cn.starry.hub.functions.menu.selector.button;
+package cn.starry.hub.functions.menu.selector;
 
 import cn.starry.core.utils.ItemBuilder;
-import cn.starry.core.utils.SkullUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

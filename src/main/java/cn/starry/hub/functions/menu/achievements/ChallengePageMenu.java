@@ -31,8 +31,7 @@ public class ChallengePageMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        AchievementType achievementType = CacheData.ACHIEVEMENT_MENU.get(player);
-        return achievementType.getDisplayName() + "挑战成就";
+        return "               &0挑战成就";
     }
 
     @Override

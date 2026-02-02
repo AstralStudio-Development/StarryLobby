@@ -37,7 +37,7 @@ public class ChallengeAchievementButton extends Button {
 
         List<String> description = achievement.getDescription();
         if (achievement.isHidden() && !AchievementManager.isUnlocked(player, achievement)) {
-            lores.add("   &7？？？");
+            lores.add("   &7???");
         } else {
             lores.addAll(formatDescription(description));
             lores.add(" ");

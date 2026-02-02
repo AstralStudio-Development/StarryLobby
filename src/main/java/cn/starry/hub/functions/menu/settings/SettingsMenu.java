@@ -36,11 +36,11 @@ public class SettingsMenu extends Menu {
     public String getTitle(Player player) {
         switch (type) {
             case 0:
-                return "               &0大厅设置     ";
+                return "                &0大厅设置     ";
             case 1:
-                return "               &0聊天设置     ";
+                return "                &0聊天设置     ";
             case 2:
-                return "               &0社交设置     ";
+                return "                &0社交设置     ";
             default:
                 return "Unknown";
         }

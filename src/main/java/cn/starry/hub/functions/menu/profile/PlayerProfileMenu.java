@@ -14,7 +14,7 @@ public class PlayerProfileMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate("              &0个人档案     ");
+        return CC.translate("                &0个人档案     ");
     }
 
     @Override

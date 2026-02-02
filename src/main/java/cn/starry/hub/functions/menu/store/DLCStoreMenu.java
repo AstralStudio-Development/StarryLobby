@@ -34,16 +34,16 @@ public class DLCStoreMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        buttons.put(0, new StoreCategoryButton(StoreCategoryButton.Category.RANK, parent));
-        buttons.put(1, new StoreCategoryButton(StoreCategoryButton.Category.BOOSTER, parent));
-        buttons.put(2, new StoreCategoryButton(StoreCategoryButton.Category.DLC, parent));
+        buttons.put(3, new StoreCategoryButton(StoreCategoryButton.Category.RANK, parent));
+        buttons.put(4, new StoreCategoryButton(StoreCategoryButton.Category.BOOSTER, parent));
+        buttons.put(5, new StoreCategoryButton(StoreCategoryButton.Category.DLC, parent));
 
         for (int i = 9; i < 18; i++) {
             buttons.put(i, new StoreGlassButton(false));
         }
 
         // In original code: this.inv.setItem(11,new StoreButtons().GlassButton(true));
-        buttons.put(11, new StoreGlassButton(true));
+        buttons.put(14, new StoreGlassButton(true));
 
         buttons.put(31, new UnavailableButton());
 

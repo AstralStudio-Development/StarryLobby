@@ -1,4 +1,4 @@
-package cn.starry.hub.functions.menu.selector.button;
+package cn.starry.hub.functions.menu.selector;
 
 public enum GameType {
 

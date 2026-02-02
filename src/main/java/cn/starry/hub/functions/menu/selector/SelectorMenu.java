@@ -1,6 +1,5 @@
 package cn.starry.hub.functions.menu.selector;
 
-import cn.starry.hub.functions.menu.selector.button.GameOwned ;
 import cn.starry.hub.functions.menu.selector.button.GameItemButton;
 import cn.starry.hub.utils.menu.Button;
 import cn.starry.hub.utils.menu.Menu;
