@@ -6,7 +6,7 @@ plugins {
 
 //⑨
 group = 'cn.starry.hub'
-version = '1.8.0-Renascence'
+version = file("src/main/resources/plugin.yml").readLines().find { it.startsWith("version:") }.split(":")[1].trim().replace("'", "")
 
 repositories {
     mavenCentral()

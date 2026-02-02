@@ -45,8 +45,8 @@ public class AchievementsButtons {
             }
         }
         lores.add("   &a挑战成就   ");
-        lores.add(" ");
         lores.add("   &8" + achievementType.getDisplayName() + "   ");
+        lores.add(" ");
         lores.add("   &7已解锁 &b" + unlockedAchievements + "&7/&b" + totalAchievements + " &8(" + numberFormat.format((float) unlockedAchievements / (float) totalAchievements * 100) + "%)   ");
         lores.add("   &7点数 &e" + availablePoints + "&7/&e" + totalPoints + " &8(" + numberFormat.format((float) availablePoints / (float) totalPoints * 100) + "%)   ");
         lores.add(" ");
@@ -65,8 +65,8 @@ public class AchievementsButtons {
     public ItemStack GradeButton(Player player,AchievementType achievementType) {
         List<String> lores = new ArrayList<>();
         lores.add("   &a分级成就   ");
-        lores.add(" ");
         lores.add("   &8" + achievementType.getDisplayName() + "   ");
+        lores.add(" ");
         lores.add("   &7已解锁 &bN&7/&bA   ");
         lores.add("   &7点数 &eN&7/&eA   ");
         lores.add(" ");
@@ -111,13 +111,25 @@ public class AchievementsButtons {
             }
         }
         List<String> lores = new ArrayList<>();
+        if (id == 0) {
+            lores.add("   &a总完成度   ");
+        } else if (id == 1) {
+            lores.add("   &a挑战成就   ");
+        } else if (id == 2) {
+            lores.add("   &a分级成就   ");
+        }
+
         if (id == 0 || id == 1 || id == 2 && achievementType != null) {
             lores.add("   &8" + achievementType.getDisplayName() + "   ");
+            lores.add(" ");
         } else {
             if (id != 3) {
                 lores.add("   &a成就完成进度   ");
                 lores.add(" ");
-                lores.add("   &7玩家 " + RankUtil.getFormatRankById(Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rank"),player.getUniqueId()) + player.getDisplayName() + "   ");
+                //lores.add("   &7玩家 " + RankUtil.getFormatRankById(Core.getInstance().getMongoDB().getPlayerData(player.getUniqueId(),"rank"),player.getUniqueId()) + player.getDisplayName() + "   ");
+            } else {
+                lores.add("   &a" + achievementType.getDisplayName() + "成就   ");
+                lores.add(" ");
             }
         }
         lores.add("   &7已解锁 &b" + unlockedAchievements + "&7/&b" + totalAchievements + " &8(" + numberFormat.format((float) unlockedAchievements / (float) totalAchievements * 100) + "%)   ");
@@ -128,28 +140,25 @@ public class AchievementsButtons {
             lores.add(" ");
         }
         if (id == 0) {
-            lores.add("   &a总完成度   ");
             item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
             return item;
         } else if (id == 1) {
-            lores.add("   &a挑战成就   ");
             item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
             return item;
         } else if (id == 2) {
-            lores.add("   &a分级成就   ");
             item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
             return item;
         } else if (id == 3) {
-            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate("&a" + achievementType.getDisplayName() + "成就")).lore(lores).build();
+            item = new ItemBuilder(achievementType.getIcon()).name(CC.translate(" ")).lore(lores).build();
             meta = item.getItemMeta();
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             item.setItemMeta(meta);
@@ -196,33 +205,41 @@ public class AchievementsButtons {
 
     public ItemStack AchievementsButton(Player player, AbstractAchievement achievement) {
         List<String> lores = new ArrayList<>();
+
+        String name = achievement.getDisplayName();
+        if (achievement.isHidden() && !AchievementManager.isUnlocked(player, achievement)) {
+            name = "秘密成就";
+        }
+        String nameColor = AchievementManager.isUnlocked(player, achievement) ? "&a" : "&c";
+        lores.add("   " + nameColor + name + "   ");
+        lores.add(" ");
+
         List<String> description = achievement.getDescription();
         if (achievement.isHidden() && !AchievementManager.isUnlocked(player,achievement)) {
-            lores.add(" ");
-            lores.add("&7？？？");
+            lores.add("   &7？？？");
         } else {
-            lores.addAll(description);
+            lores.addAll(formatDescription(description));
             lores.add(" ");
             lores.add("   &7奖励   ");
             lores.add("   &8+ &e" + achievement.getPoints() + " &7成就点数   ");
         }
         lores.add(" ");
-        lores.add("   &7已被 &f" + Core.getInstance().getMongoDB().getPercentageOfAchievement(achievement.getInternalName()) + " %&7的玩家解锁   ");
+        lores.add("   &7已被 &f" + Core.getInstance().getMongoDB().getPercentageOfAchievement(achievement.getInternalName()) + "% &7的玩家解锁   ");
         lores.add(" ");
         lores.add(AchievementManager.isUnlocked(player,achievement) ? "   &a成就已解锁   " : "   &c成就尚未解锁   ");
         lores.add(" ");
 
         if (AchievementManager.isUnlocked(player,achievement)) {
             if (achievement.isPremium()) {
-                item = new ItemBuilder(Material.DIAMOND).name(CC.translate("&a" + achievement.getDisplayName())).lore(lores).amount(achievement.getPoints()).shiny().build();
+                item = new ItemBuilder(Material.DIAMOND).name(CC.translate(" ")).lore(lores).amount(achievement.getPoints()).shiny().build();
             } else {
-                item = new ItemBuilder(Material.DIAMOND).name(CC.translate("&a" + achievement.getDisplayName())).lore(lores).amount(achievement.getPoints()).build();
+                item = new ItemBuilder(Material.DIAMOND).name(CC.translate(" ")).lore(lores).amount(achievement.getPoints()).build();
             }
             meta = item.getItemMeta();
             item.setItemMeta(meta);
             return item;
         } else {
-            item = new ItemBuilder(Material.COAL).name(CC.translate("&c" + (achievement.isHidden() ? "秘密成就" : achievement.getDisplayName()))).lore(lores).amount((achievement.isHidden() ? 1 : achievement.getPoints())).build();
+            item = new ItemBuilder(Material.COAL).name(CC.translate(" ")).lore(lores).amount((achievement.isHidden() ? 1 : achievement.getPoints())).build();
             meta = item.getItemMeta();
             item.setItemMeta(meta);
             return item;
@@ -250,6 +267,45 @@ public class AchievementsButtons {
         meta = item.getItemMeta();
         item.setItemMeta(meta);
         return item;
+    }
+
+    private List<String> formatDescription(List<String> description) {
+        List<String> formatted = new ArrayList<>();
+        for (String line : description) {
+            StringBuilder currentLine = new StringBuilder();
+            double currentWidth = 0;
+            String lastColor = "&7";
+
+            for (int i = 0; i < line.length(); i++) {
+                char c = line.charAt(i);
+                
+                if (c == '&' && i + 1 < line.length()) {
+                    char next = line.charAt(i + 1);
+                    if ("0123456789abcdefklmnor".indexOf(Character.toLowerCase(next)) != -1) {
+                        currentLine.append(c).append(next);
+                        lastColor = "&" + next;
+                        i++;
+                        continue;
+                    }
+                }
+
+                double charWidth = (c > 128) ? 2 : 1;
+                
+                if (currentWidth + charWidth > 24) {
+                    formatted.add("   " + currentLine.toString() + "   ");
+                    currentLine = new StringBuilder();
+                    currentLine.append(lastColor);
+                    currentWidth = 0;
+                }
+                
+                currentLine.append(c);
+                currentWidth += charWidth;
+            }
+            if (currentLine.length() > 0) {
+                formatted.add("   " + currentLine.toString() + "   ");
+            }
+        }
+        return formatted;
     }
 
 }
