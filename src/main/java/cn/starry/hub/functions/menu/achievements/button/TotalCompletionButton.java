@@ -80,7 +80,7 @@ public class TotalCompletionButton extends Button {
                 lores.add("   &a成就完成进度   ");
                 lores.add(" ");
             } else {
-                lores.add("   &a" + achievementType.getDisplayName() + "成就   ");
+                lores.add("   &a" + achievementType.getDisplayName());
                 lores.add(" ");
             }
         }
