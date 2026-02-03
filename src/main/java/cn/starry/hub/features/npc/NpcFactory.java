@@ -3,17 +3,23 @@ package cn.starry.hub.features.npc;
 import cn.starry.core.utils.ClassUtil;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.task.NPCRunnable;
-import com.bnstra.npclib.NPCLib;
-import com.bnstra.npclib.api.NPC;
-import com.bnstra.npclib.api.events.NPCInteractEvent;
-import com.bnstra.npclib.api.state.NPCSlot;
-import com.bnstra.npclib.plugin.NPCLibPlugin;
+import cn.starry.hub.utils.CitizensUtil;
 import lombok.SneakyThrows;
+import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.event.NPCClickEvent;
+import net.citizensnpcs.api.npc.NPC;
+import net.citizensnpcs.api.npc.NPCRegistry;
+import net.citizensnpcs.api.npc.SimpleNPCDataStore;
+import net.citizensnpcs.api.trait.trait.Equipment;
+import net.citizensnpcs.api.util.YamlStorage;
+import net.citizensnpcs.trait.SkinTrait;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -25,6 +31,7 @@ import java.util.List;
 public class NpcFactory implements Listener {
 
     private static final List<AbstractNPC> Npc = new ArrayList<>();
+    private File store;
 
     public static List<AbstractNPC> getNpc() {
         return NpcFactory.Npc;
@@ -32,7 +39,8 @@ public class NpcFactory implements Listener {
 
     @SneakyThrows
     public void init() {
-        NPCLib npcLib = new NPCLib(StarryLobby.getPlugin(StarryLobby.class));
+        this.store = new File(StarryLobby.getInstance().getDataFolder(), "npc.yml");
+        NPCRegistry npcRegistry = CitizensAPI.createNamedNPCRegistry("StarryLobby", new SimpleNPCDataStore(new YamlStorage(this.store)));
 
         String type = StarryLobby.getInstance().getConfig().getString("type", "");
         String packageName = switch (type.toLowerCase()) {
@@ -54,32 +62,37 @@ public class NpcFactory implements Listener {
             if (AbstractNPC.class.isAssignableFrom(clazz)) {
                 AbstractNPC abstractNPC = (AbstractNPC) clazz.getDeclaredConstructor().newInstance();
 
-                NPC npc = npcLib.createNPC();
-                npc.setLocation(abstractNPC.getNpcSpawnLocation());
+                NPC npc = npcRegistry.createNPC(EntityType.PLAYER, abstractNPC.getNpcDisplayName(player));
+
+                CitizensUtil.addDefaultSettings(npc);
+
+                npc.getOrAddTrait(SkinTrait.class).setSkinName(abstractNPC.getNpcSkin());
 
                 if (abstractNPC.getNpcHeldItem() != null) {
-                    npc.setItem(NPCSlot.MAINHAND, abstractNPC.getNpcHeldItem());
+                    npc.getOrAddTrait(Equipment.class).set(Equipment.EquipmentSlot.HAND, abstractNPC.getNpcHeldItem());
                 }
 
                 if (abstractNPC.getNpcHelmetItem() != null) {
-                    npc.setItem(NPCSlot.HELMET, abstractNPC.getNpcHelmetItem());
+                    npc.getOrAddTrait(Equipment.class).set(Equipment.EquipmentSlot.HELMET, abstractNPC.getNpcHelmetItem());
                 }
 
-                abstractNPC.setNpc(npc);
+                npc.spawn(abstractNPC.getNpcSpawnLocation());
+
+                //abstractNPC.setNpc(npc);
 
                 Npc.add(abstractNPC);
             }
         }
 
-        new NPCRunnable().runTaskTimerAsynchronously(StarryLobby.getInstance(), 0, 3L);
+        //new NPCRunnable().runTaskTimerAsynchronously(StarryLobby.getInstance(), 0, 3L);
 
     }
 
-    @EventHandler
+    //@EventHandler
     @SneakyThrows
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        for (AbstractNPC Npc : Npc) {
+        /*for (AbstractNPC Npc : Npc) {
             Npc.getNpc().create();
             Npc.getNpc().setText(player, Npc.getNpcTextLine(player));
             if (Npc.getNpcSkin(player) != null) {
@@ -88,15 +101,15 @@ public class NpcFactory implements Listener {
             if (!Npc.getNpc().isShown(player)) {
                 Npc.getNpc().show(player);
             }
-        }
+        }*/
 
     }
 
     @EventHandler
-    public void onInteract(NPCInteractEvent event) {
+    public void onInteract(NPCClickEvent event) {
         for (AbstractNPC abstractNPC : Npc) {
             if (abstractNPC.getNpc().getUniqueId().equals(event.getNPC().getUniqueId())) {
-                abstractNPC.handlePlayerInteract(event.getWhoClicked());
+                abstractNPC.handlePlayerInteract(event.getClicker());
             }
         }
     }

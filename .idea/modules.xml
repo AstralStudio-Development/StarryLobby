@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarryLobby.main.iml" filepath="$PROJECT_DIR$/.idea/modules/StarryLobby.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cn.starry.hub.StarryLobby.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cn.starry.hub.StarryLobby.main.iml" />
     </modules>
   </component>
 </project>

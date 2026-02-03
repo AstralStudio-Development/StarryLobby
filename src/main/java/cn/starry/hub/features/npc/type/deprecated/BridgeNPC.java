@@ -6,7 +6,7 @@ import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
 import dev.jnic.annotations.Include;
 import me.clip.placeholderapi.PlaceholderAPI;
-import com.bnstra.npclib.api.skin.Skin;
+import net.citizensnpcs.npc.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -30,15 +30,15 @@ public class BridgeNPC extends AbstractNPC {
 
     @Override
     public List<String> getNpcDisplayName(Player player) {
-        ArrayList<String> lines = new ArrayList<String>();
+        ArrayList<String> lines = new ArrayList<>();
         lines.add("&e❖ &b搭路练习");
-        lines.add(PlaceholderAPI.setPlaceholders((Player)player, (String)("&7当前有&b " + StarryLobby.getInstance().getConfig().getString("total.Bridge") + " &7名玩家正在游玩")));
+        lines.add(PlaceholderAPI.setPlaceholders(player, "&7当前有&b " + StarryLobby.getInstance().getConfig().getString("total.Bridge") + " &7名玩家正在游玩"));
         return lines;
     }
 
     @Override
     public Location getNpcSpawnLocation() {
-        return new Location(Bukkit.getWorld((String)"world"), -34.5, 58.0, 176.5, 90.0f, 0.0f);
+        return new Location(Bukkit.getWorld("world"), -34.5, 58.0, 176.5, 90.0f, 0.0f);
     }
 
     @Override

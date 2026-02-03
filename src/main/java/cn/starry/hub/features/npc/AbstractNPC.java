@@ -1,8 +1,8 @@
 package cn.starry.hub.features.npc;
 
 import cn.starry.core.utils.chat.CC;
-import com.bnstra.npclib.api.NPC;
-import com.bnstra.npclib.api.skin.Skin;
+import net.citizensnpcs.api.npc.NPC;
+import net.citizensnpcs.npc.skin.Skin;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -37,13 +37,14 @@ public abstract class AbstractNPC {
     public abstract Location getNpcSpawnLocation();
 
     //Player name
-    public abstract Skin getNpcSkin(Player player);
+    public abstract String getNpcSkin();
 
     //玩家交互处理
     public abstract void handlePlayerInteract(Player player);
 
     //npc 手持物品
     public abstract ItemStack getNpcHeldItem();
+
     //npc 头盔
     public abstract ItemStack getNpcHelmetItem();
 
