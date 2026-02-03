@@ -2,7 +2,7 @@ package cn.starry.hub.commands.player;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
-import cn.starry.hub.functions.parkour.ParkourManager;
+import cn.starry.hub.features.parkour.ParkourManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -107,3 +107,4 @@ public class ParkourCommand extends Command {
         }
     }
 }
+

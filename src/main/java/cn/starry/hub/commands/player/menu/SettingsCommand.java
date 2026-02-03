@@ -1,7 +1,7 @@
 package cn.starry.hub.commands.player.menu;
 
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.functions.menu.settings.SettingsMenu;
+import cn.starry.hub.menus.settings.SettingsMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,3 +26,4 @@ public class SettingsCommand extends Command {
         return true;
     }
 }
+

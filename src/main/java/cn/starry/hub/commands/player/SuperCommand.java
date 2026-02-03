@@ -2,7 +2,7 @@ package cn.starry.hub.commands.player;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
-import cn.starry.hub.functions.menu.achievements.AchievementsMenu;
+import cn.starry.hub.menus.achievements.AchievementsMenu;
 import cn.starry.hub.utils.menu.menus.PagedMenu;
 import dev.jnic.annotations.Include;
 import org.bukkit.command.Command;
@@ -61,3 +61,4 @@ public class SuperCommand extends Command {
     }
 
 }
+

@@ -2,7 +2,7 @@ package cn.starry.hub.commands.player.menu;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
-import cn.starry.hub.functions.menu.bedwars.BedWarsShopMenu;
+import cn.starry.hub.menus.bedwars.BedWarsShopMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,3 +28,4 @@ public class ShopCommand extends Command {
         return true;
     }
 }
+

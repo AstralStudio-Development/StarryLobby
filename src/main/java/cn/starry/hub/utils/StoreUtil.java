@@ -2,7 +2,7 @@ package cn.starry.hub.utils;
 
 import cn.starry.core.functions.achievement.AchievementManager;
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.listener.handler.LobbyHandler;
+import cn.starry.hub.listeners.handler.LobbyHandler;
 import java.util.Objects;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;

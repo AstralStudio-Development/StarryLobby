@@ -1,5 +1,5 @@
 name: StarryLobby
-version: '1.8.2-Renascence'
+version: '1.8.3-Renascence'
 main: cn.starry.hub.StarryLobby
 authors: [ Stalyer, Qlickly_, TraeAI ]
 description: "Process optimization."

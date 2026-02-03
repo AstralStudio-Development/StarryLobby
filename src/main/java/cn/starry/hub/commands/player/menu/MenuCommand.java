@@ -1,7 +1,7 @@
 package cn.starry.hub.commands.player.menu;
 
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.functions.menu.selector.SelectorMenu;
+import cn.starry.hub.menus.selector.SelectorMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,3 +25,4 @@ public class MenuCommand extends Command {
         return true;
     }
 }
+

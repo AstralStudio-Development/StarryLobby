@@ -2,10 +2,10 @@ package cn.starry.hub;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.database.MongoDBManager;
-import cn.starry.hub.functions.presents.PresentsFactory;
-import cn.starry.hub.functions.runnable.RebootRunnable;
-import cn.starry.hub.manager.CommandRegistry;
-import cn.starry.hub.manager.LobbyManager;
+import cn.starry.hub.features.presents.PresentsFactory;
+import cn.starry.hub.task.RebootRunnable;
+import cn.starry.hub.managers.CommandRegistry;
+import cn.starry.hub.managers.LobbyManager;
 import cn.starry.hub.utils.nametag.CautusHandler;
 import dev.jnic.annotations.Include;
 import lombok.Getter;
@@ -101,3 +101,4 @@ public final class StarryLobby extends JavaPlugin {
         return lobbyManager.getMongoDBManager();
     }
 }
+

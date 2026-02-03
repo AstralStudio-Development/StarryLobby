@@ -1,7 +1,7 @@
 package cn.starry.hub.commands.player.menu;
 
 import cn.starry.core.utils.chat.CC;
-import cn.starry.hub.functions.menu.profile.PlayerProfileMenu;
+import cn.starry.hub.menus.profile.PlayerProfileMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,3 +25,4 @@ public class ProfileCommand extends Command {
         return true;
     }
 }
+
