@@ -1,8 +1,7 @@
 package cn.starry.hub.features.npc;
 
 import cn.starry.core.utils.chat.CC;
-import com.bnstra.npclib.api.NPC;
-import com.bnstra.npclib.api.skin.Skin;
+import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -58,4 +57,3 @@ public abstract class AbstractNPC {
         this.npc = npc;
     }
 }
-

@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.deprecated;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import dev.jnic.annotations.Include;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -100,4 +100,5 @@ public class UpdateInfoNPC extends AbstractNPC {
         player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES,1,1);
     }
 }
+
 

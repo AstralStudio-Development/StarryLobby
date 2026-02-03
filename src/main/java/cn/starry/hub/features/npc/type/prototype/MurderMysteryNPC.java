@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.prototype;
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.features.npc.AbstractNPC;
 import cn.starry.hub.utils.ConnecterUtil;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ public class MurderMysteryNPC extends AbstractNPC {
     @Override
     public List<String> getNpcDisplayName(Player player) {
         ArrayList<String> lines = new ArrayList<String>();
-        UUID uuid = player.getUniqueId();
+        // UUID uuid = player.getUniqueId();
         lines.add("&6❖ &b密室杀手");
         //lines.add(PlaceholderAPI.setPlaceholders((Player)player, (String)("&7当前有 &b" + StarryLobby.getInstance().getConfig().getString("total.RPG") + " &7名玩家正在游玩")));
         lines.add(PlaceholderAPI.setPlaceholders((Player)player, "&c即将到来"));
@@ -67,4 +67,5 @@ public class MurderMysteryNPC extends AbstractNPC {
         return false;
     }
 }
+
 

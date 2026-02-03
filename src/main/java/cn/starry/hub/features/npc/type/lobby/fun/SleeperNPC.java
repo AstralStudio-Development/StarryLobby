@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.lobby.fun;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -32,7 +32,7 @@ public class SleeperNPC extends AbstractNPC {
     @Override
     public List<String> getNpcDisplayName(Player player) {
         List<String> lines = new ArrayList<>();
-        UUID uuid = player.getUniqueId();
+        // UUID uuid = player.getUniqueId();
         lines.add("&b将要睡觉的人");
         lines.add("&e&l右键点击");
         return lines;
@@ -92,4 +92,5 @@ public class SleeperNPC extends AbstractNPC {
         player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES,1,1);
     }
 }
+
 

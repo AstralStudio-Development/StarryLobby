@@ -4,7 +4,7 @@ import cn.starry.core.utils.chat.CC;
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,7 +34,7 @@ public class FisherNPC extends AbstractNPC {
     @Override
     public List<String> getNpcDisplayName(Player player) {
         List<String> lines = new ArrayList<>();
-        UUID uuid = player.getUniqueId();
+        // UUID uuid = player.getUniqueId();
         lines.add("&b渔夫");
         lines.add("&e&l右键点击");
         return lines;
@@ -96,4 +96,5 @@ public class FisherNPC extends AbstractNPC {
         player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES,1,1);
     }
 }
+
 

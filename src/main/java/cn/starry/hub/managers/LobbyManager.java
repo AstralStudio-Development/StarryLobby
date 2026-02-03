@@ -52,6 +52,14 @@ public class LobbyManager {
         if (this.mongoDBManager != null) {
             this.mongoDBManager.close();
         }
+        // Unload NPCs on disable
+        try {
+            if (Bukkit.getPluginManager().getPlugin("Citizens") != null && Bukkit.getPluginManager().getPlugin("Citizens").isEnabled()) {
+                 NpcFactory.clear();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadScoreBoard() {
@@ -62,8 +70,14 @@ public class LobbyManager {
     }
 
     private void loadNPCs() {
+        if (Bukkit.getPluginManager().getPlugin("Citizens") == null || !Bukkit.getPluginManager().getPlugin("Citizens").isEnabled()) {
+            Bukkit.getConsoleSender().sendMessage(CC.translate(plugin.getPrefix() + "&c未找到 Citizens 插件或插件未启用，NPC功能将关闭。"));
+            return;
+        }
         Bukkit.getConsoleSender().sendMessage(CC.translate(plugin.getPrefix() + "&f正在注册NPC..."));
-        new NpcFactory().init();
+        NpcFactory npcFactory = new NpcFactory();
+        npcFactory.init();
+        plugin.getServer().getPluginManager().registerEvents(npcFactory, plugin);
         Bukkit.getConsoleSender().sendMessage(CC.translate(plugin.getPrefix() + "&fNPC已成功注册!"));
     }
 
@@ -91,8 +105,11 @@ public class LobbyManager {
     private void clearEntities() {
         World world = Bukkit.getWorld("world");
         if (world != null) {
-            world.getEntities().forEach(Entity::remove);
-            plugin.getLogger().info("All entities in world 'world' have been removed.");
+            world.getEntities().stream()
+                    .filter(entity -> !(entity instanceof org.bukkit.entity.Player))
+                    .filter(entity -> !entity.hasMetadata("NPC"))
+                    .forEach(Entity::remove);
+            plugin.getLogger().info("All entities (excluding Players and NPCs) in world 'world' have been removed.");
         } else {
             plugin.getLogger().warning("World 'world' not found!");
         }

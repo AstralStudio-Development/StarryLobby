@@ -4,7 +4,7 @@ import cn.starry.core.utils.ItemBuilder;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -74,4 +74,5 @@ public class GuardNPCL extends AbstractNPC {
         player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES,1,1);
     }
 }
+
 

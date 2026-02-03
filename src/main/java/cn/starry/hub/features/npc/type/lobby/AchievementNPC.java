@@ -4,7 +4,7 @@ import cn.starry.core.Core;
 import cn.starry.core.functions.achievement.AchievementManager;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -66,4 +66,5 @@ public class AchievementNPC extends AbstractNPC {
         return true;
     }
 }
+
 

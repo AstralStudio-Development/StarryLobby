@@ -1,7 +1,7 @@
 package cn.starry.hub.features.npc.type.bedwars;
 
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import dev.jnic.annotations.Include;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ public class QuestMasterNPC extends AbstractNPC {
     @Override
     public List<String> getNpcDisplayName(Player player) {
         List<String> lines = new ArrayList<>();
-        UUID uuid = player.getUniqueId();
+        // UUID uuid = player.getUniqueId();
         lines.add("&b任务大师");
         lines.add("&e&l右键点击");
         return lines;
@@ -67,4 +67,5 @@ public class QuestMasterNPC extends AbstractNPC {
     }
 
 }
+
 

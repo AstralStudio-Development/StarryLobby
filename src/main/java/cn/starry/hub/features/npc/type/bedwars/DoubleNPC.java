@@ -1,7 +1,7 @@
 package cn.starry.hub.features.npc.type.bedwars;
 
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.features.npc.Skin;
 import dev.jnic.annotations.Include;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -64,4 +64,5 @@ public class DoubleNPC extends AbstractNPC {
         return false;
     }
 }
+
 
