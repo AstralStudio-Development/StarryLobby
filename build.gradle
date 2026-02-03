@@ -13,7 +13,6 @@ repositories {
     maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url 'https://repo.papermc.io/repository/maven-public/' }
-    maven { url 'https://repo.citizensnpcs.co/' }
 }
 
 sourceSets {
@@ -32,16 +31,13 @@ dependencies {
 
     // Compile Only - Provided by Server or other Plugins
     compileOnly fileTree(dir: 'libs', include: ['*.jar'], exclude: [
-            'citizensapi-2.0.41-SNAPSHOT.jar',
+            'npclib-plugin-2.13-SNAPSHOT.jar',
             'reflections-0.10.jar',
             'javax.annotation-api-1.3.2 (1).jar'
     ])
-    
-    compileOnly('net.citizensnpcs:citizens-main:2.0.35-SNAPSHOT') {
-        exclude group: '*', module: '*'
-    }
 
     // Implementation - Will be included in the shadow jar
+    implementation files('libs/npclib-plugin-2.13-SNAPSHOT.jar')
     implementation files('libs/reflections-0.10.jar')
     implementation files('libs/javax.annotation-api-1.3.2 (1).jar')
 }

@@ -4,7 +4,7 @@ import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.menus.selector.SelectorMenu;
 import cn.starry.hub.features.npc.AbstractNPC;
 import me.clip.placeholderapi.PlaceholderAPI;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -64,5 +64,4 @@ public class AllGamesNPC extends AbstractNPC {
         return false;
     }
 }
-
 

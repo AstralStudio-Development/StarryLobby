@@ -7,7 +7,7 @@ import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.features.npc.AbstractNPC;
 import dev.jnic.annotations.Include;
 import me.clip.placeholderapi.PlaceholderAPI;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,29 +34,19 @@ public class StatsNPC extends AbstractNPC {
         List<String> lines = new ArrayList<>();
         int unlockedAchievements = 0;
         int totalAchievements = 0;
-        if (player != null) {
-            for (AbstractAchievement achievements : Core.getInstance().getAchievementFactory().getAchievements()) {
-                if (achievements.getType().equals(AchievementType.BEDWARS)) {
-                    totalAchievements++;
-                    if (Core.getInstance().getMongoDB().getAchievementData(player.getUniqueId(), "achievements").contains(achievements.getInternalName())) {
-                        unlockedAchievements++;
-                    }
+        for (AbstractAchievement achievements : Core.getInstance().getAchievementFactory().getAchievements()) {
+            if (achievements.getType().equals(AchievementType.BEDWARS)) {
+                totalAchievements++;
+                if (Core.getInstance().getMongoDB().getAchievementData(player.getUniqueId(),"achievements").contains(achievements.getInternalName())) {
+                    unlockedAchievements++;
                 }
             }
         }
         lines.add("&b&l你的起床战争信息");
-        if (player != null) {
-            lines.add("&f你的等级 &b" + PlaceholderAPI.setPlaceholders(player, "%bedwars_level%"));
-        } else {
-            lines.add("&f你的等级 &bLoading...");
-        }
+        lines.add("&f你的等级 &b" + PlaceholderAPI.setPlaceholders(player,"%bedwars_level%"));
         //lines.add("&f进度 " + PlaceholderAPI.setPlaceholders(player,"&b%bw1058_player_xp_formatted%&7/&a%bw1058_player_rerq_xp_formatted%"));
         lines.add("&f成就 &e" + unlockedAchievements + "&8/&b" + totalAchievements);
-        if (player != null) {
-            lines.add("&f总胜利数 " + PlaceholderAPI.setPlaceholders(player, "&b%bedwars_wins%"));
-        } else {
-            lines.add("&f总胜利数 &b0");
-        }
+        lines.add("&f总胜利数 " + PlaceholderAPI.setPlaceholders(player,"&b%bedwars_wins%"));
         lines.add("&8点击查看数据");
         return lines;
     }
@@ -97,5 +87,4 @@ public class StatsNPC extends AbstractNPC {
         return false;
     }
 }
-
 

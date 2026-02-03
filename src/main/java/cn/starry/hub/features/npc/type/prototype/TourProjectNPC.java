@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.prototype;
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.features.npc.AbstractNPC;
 import cn.starry.hub.utils.ConnecterUtil;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -28,7 +28,7 @@ public class TourProjectNPC extends AbstractNPC {
     @Override
     public List<String> getNpcDisplayName(Player player) {
         ArrayList<String> lines = new ArrayList<String>();
-        // UUID uuid = player.getUniqueId();
+        UUID uuid = player.getUniqueId();
         lines.add("&6❖ &b羁旅");
         //lines.add(PlaceholderAPI.setPlaceholders((Player)player, (String)("&7当前有 &b" + StarryLobby.getInstance().getConfig().getString("total.RPG") + " &7名玩家正在游玩")));
         lines.add(PlaceholderAPI.setPlaceholders((Player)player, "&7点击游玩"));
@@ -67,5 +67,4 @@ public class TourProjectNPC extends AbstractNPC {
         return false;
     }
 }
-
 

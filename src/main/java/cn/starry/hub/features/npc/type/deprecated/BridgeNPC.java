@@ -6,7 +6,7 @@ import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
 import dev.jnic.annotations.Include;
 import me.clip.placeholderapi.PlaceholderAPI;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -66,5 +66,4 @@ public class BridgeNPC extends AbstractNPC {
         return false;
     }
 }
-
 

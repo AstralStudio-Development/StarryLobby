@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.deprecated;
 import cn.starry.hub.features.npc.AbstractNPC;
 import dev.jnic.annotations.Include;
 import me.clip.placeholderapi.PlaceholderAPI;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -65,5 +65,4 @@ public class TeamNPC extends AbstractNPC {
         return false;
     }
 }
-
 

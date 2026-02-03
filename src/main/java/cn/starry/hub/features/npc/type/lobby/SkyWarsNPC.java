@@ -5,7 +5,7 @@ import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
 import cn.starry.hub.utils.ConnecterUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -29,7 +29,8 @@ public class SkyWarsNPC extends AbstractNPC {
     @Override
     public List<String> getNpcDisplayName(Player player) {
         ArrayList<String> lines = new ArrayList<String>();
-        // UUID uuid = player.getUniqueId();
+        UUID uuid = player.getUniqueId();
+        lines.add("&e❖ &b空岛战争");
         //lines.add(PlaceholderAPI.setPlaceholders((Player)player, (String)("&7当前有 &b" + StarryLobby.getInstance().getConfig().getString("total.SkyWars") + " &7名玩家正在游玩")));
         lines.add(PlaceholderAPI.setPlaceholders((Player)player, "&7点击游玩"));
         return lines;
@@ -67,5 +68,4 @@ public class SkyWarsNPC extends AbstractNPC {
         return false;
     }
 }
-
 

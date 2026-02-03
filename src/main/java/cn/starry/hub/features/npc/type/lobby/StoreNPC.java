@@ -2,7 +2,7 @@ package cn.starry.hub.features.npc.type.lobby;
 
 import cn.starry.hub.menus.store.RankStoreMenu;
 import cn.starry.hub.features.npc.AbstractNPC;
-import cn.starry.hub.features.npc.Skin;
+import com.bnstra.npclib.api.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -61,5 +61,4 @@ public class StoreNPC extends AbstractNPC {
         return false;
     }
 }
-
 
