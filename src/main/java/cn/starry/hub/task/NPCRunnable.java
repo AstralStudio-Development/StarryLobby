@@ -14,6 +14,7 @@ public class NPCRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
+        /*
         //for (Player player : Bukkit.getOnlinePlayers()) {
             for (AbstractNPC npc : NpcFactory.getNpc()) {
                 //npc.getNpc().setText(player, npc.getNpcTextLine(player));
@@ -22,6 +23,8 @@ public class NPCRunnable extends BukkitRunnable {
                 }
             }
         //}
+
+         */
     }
 
 }

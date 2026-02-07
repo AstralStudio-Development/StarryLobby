@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.prototype;
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.features.npc.AbstractNPC;
 import cn.starry.hub.utils.ConnecterUtil;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

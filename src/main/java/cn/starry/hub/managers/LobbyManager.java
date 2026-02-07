@@ -38,11 +38,11 @@ public class LobbyManager {
         
         new ParkourManager(plugin); // Initialize Parkour Manager
         loadScoreBoard();
-        loadNPCs();
         loadNameTag();
         // loadPresents();
         registerChannel();
         clearEntities();
+        loadNPCs();
         startRebootRunnable();
         loadMenu();
         registerListeners();
@@ -64,6 +64,7 @@ public class LobbyManager {
     private void loadNPCs() {
         Bukkit.getConsoleSender().sendMessage(CC.translate(plugin.getPrefix() + "&f正在注册NPC..."));
         new NpcFactory().init();
+        Bukkit.getPluginManager().registerEvents(new NpcFactory(),plugin);
         Bukkit.getConsoleSender().sendMessage(CC.translate(plugin.getPrefix() + "&fNPC已成功注册!"));
     }
 

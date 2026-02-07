@@ -1,9 +1,9 @@
 package cn.starry.hub.features.npc.type.deprecated;
 
 import cn.starry.hub.features.npc.AbstractNPC;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import dev.jnic.annotations.Include;
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.citizensnpcs.npc.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

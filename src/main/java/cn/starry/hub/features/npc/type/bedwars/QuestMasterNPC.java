@@ -1,11 +1,11 @@
 package cn.starry.hub.features.npc.type.bedwars;
 
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import dev.jnic.annotations.Include;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -38,6 +38,7 @@ public class QuestMasterNPC extends AbstractNPC {
     public Location getNpcSpawnLocation() {
         return new Location(Bukkit.getWorld("world"),-3.5,15.0,2.5,135,0);
     }
+
 
     @Override
     public Skin getNpcSkin(Player player) {

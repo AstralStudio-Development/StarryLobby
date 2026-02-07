@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.login;
 import cn.starry.core.utils.ItemBuilder;
 import cn.starry.hub.menus.login.StaffMenu;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import dev.jnic.annotations.Include;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

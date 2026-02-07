@@ -2,6 +2,8 @@ package cn.starry.hub;
 
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.database.MongoDBManager;
+import cn.starry.hub.features.npc.AbstractNPC;
+import cn.starry.hub.features.npc.NpcFactory;
 import cn.starry.hub.features.presents.PresentsFactory;
 import cn.starry.hub.task.RebootRunnable;
 import cn.starry.hub.managers.CommandRegistry;
@@ -76,6 +78,12 @@ public final class StarryLobby extends JavaPlugin {
         if (lobbyManager != null) {
             lobbyManager.close();
         }
+
+        for (AbstractNPC abstractPitNPC : NpcFactory.getNpc()) {
+            abstractPitNPC.getNpc().despawn();
+            abstractPitNPC.getNpc().destroy();
+        }
+
         Bukkit.getConsoleSender().sendMessage(CC.translate(prefix + "&b插件从服务器成功卸载"));
     }
 

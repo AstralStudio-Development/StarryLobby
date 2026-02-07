@@ -3,7 +3,7 @@ package cn.starry.hub.features.npc.type.lobby.fun;
 import cn.starry.core.utils.chat.CC;
 import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;

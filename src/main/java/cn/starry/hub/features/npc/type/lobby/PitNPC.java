@@ -5,7 +5,7 @@ import cn.starry.hub.StarryLobby;
 import cn.starry.hub.features.npc.AbstractNPC;
 import cn.starry.hub.utils.ConnecterUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

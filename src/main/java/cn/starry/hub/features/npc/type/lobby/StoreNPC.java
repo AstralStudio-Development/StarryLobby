@@ -2,7 +2,7 @@ package cn.starry.hub.features.npc.type.lobby;
 
 import cn.starry.hub.menus.store.RankStoreMenu;
 import cn.starry.hub.features.npc.AbstractNPC;
-import com.bnstra.npclib.api.skin.Skin;
+import cn.starry.hub.utils.toolkit.citizens.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -58,7 +58,7 @@ public class StoreNPC extends AbstractNPC {
 
     @Override
     public boolean isContinuouslyWatchingPlayers() {
-        return false;
+        return true;
     }
 }
 
