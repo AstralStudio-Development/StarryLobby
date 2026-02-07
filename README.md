@@ -6,8 +6,7 @@
 
 ## 已测试版本
 Spigot 1.21.4 (v1_21_R3)
-
-(预计可用版本PaperSpigot 1.21.4)
+PaperSpigot-1.21.4
 
 ## 依赖
 - **[必须]** 插件本体基于 Java 21, Bukkit, CraftBukkit, NMS实现。
