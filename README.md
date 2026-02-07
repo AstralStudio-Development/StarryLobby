@@ -9,6 +9,7 @@ Spigot 1.21.4 (v1_21_R3)
 PaperSpigot-1.21.4
 
 ## 依赖
+请自行添加所需依赖，部分依赖暂时不开源。
 - **[必须]** 插件本体基于 Java 21, Bukkit, CraftBukkit, NMS实现。
 - **[必须]** 数据存储基于 MongoDB 实现。
 - **[必须]** 计分板内容基于 PlaceHolderAPI, PlayerPoints 实现。
